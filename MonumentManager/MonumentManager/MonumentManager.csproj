@@ -116,6 +116,10 @@
     <None Include="MonumentManager_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Common\temp.txt" />
+    <Content Include="Handler\temp.txt" />
+    <Content Include="Model\temp.txt" />
+    <Content Include="Persistency\temp.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -124,6 +128,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="ViewModel\temp.txt" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -135,11 +140,6 @@
     <Folder Include="Assets\Graphic\" />
     <Folder Include="Assets\Icons\" />
     <Folder Include="Assets\Pictures\" />
-    <Folder Include="Common\" />
-    <Folder Include="Handler\" />
-    <Folder Include="Model\" />
-    <Folder Include="Persistency\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\LandingPage.xaml">
