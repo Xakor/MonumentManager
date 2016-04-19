@@ -99,9 +99,12 @@
     <Compile Include="Model\DamageModel.cs" />
     <Compile Include="Model\InspectionModel.cs" />
     <Compile Include="Model\MaterialModel.cs" />
+    <Compile Include="Model\SculptureCatalogSingleton.cs" />
     <Compile Include="Model\SculptureModel.cs" />
     <Compile Include="Model\TypeModel.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="View\LandingPage.xaml.cs">
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
