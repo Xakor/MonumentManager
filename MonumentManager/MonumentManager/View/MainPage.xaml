@@ -1,13 +1,43 @@
 ﻿<Page
-    x:Class="MonumentManager.View.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MonumentManager.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="using:MonumentManager.ViewModel"
+    
+    x:Class="MonumentManager.View.MainPage"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <ViewModel:MainPageViewModel/>
+    </Page.DataContext>
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView x:Name="TmpListView" Margin="10" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" VerticalAlignment="Top" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Height="50" Orientation="Horizontal" Padding="10" >
+                        <TextBlock Text="{Binding Id}" Margin="0,0,20,0"/>
+                        <TextBlock Text="{Binding Name}" Padding="0,0,20,0"/>
+                        <TextBlock Text="{Binding Address}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <GridView Margin="10,160,10,10" VerticalAlignment="Top" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Width="150" Height="150" Padding="1">
+                        <Image Width="148" Height="100" Source="ms-appx:///Assets/Square150x150Logo.png" />
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                        <TextBlock Text="{Binding Address}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+        <TextBlock Text="{Binding SelectedSculpture.Name}" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
     </Grid>
 </Page>

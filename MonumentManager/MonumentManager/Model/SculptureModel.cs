@@ -8,19 +8,62 @@ namespace MonumentManager.Model
 {
     class SculptureModel
     {
+        //Instance Field
+        private int _id;
+        private string _name;
+        private string _address;
+        private string _placement;
+        private int _inspectionId;
+        private int _inspectionFrequency;
+        private bool _doNotInspect;
+
         //Properties
-        public int Id { get; set; }
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+        public string Address
+        {
+            get { return _address; }
+            set { _address = value; }
+        }
+        public string Placement
+        {
+            get { return _placement; }
+            set { _placement = value; }
+        }
+        public int InspectionId
+        {
+            get { return _inspectionId; }
+            set { _inspectionId = value; }
+        }
+        public int InspectionFrequency
+        {
+            get { return _inspectionFrequency; }
+            set { _inspectionFrequency = value; }
+        }
+        public bool DoNotInspect
+        {
+            get { return _doNotInspect; }
+            set { _doNotInspect = value; }
+        }
 
-        public string Name { get; set; }
-
-        public string Address { get; set; }
-
-        public string Placement { get; set; }
-
-        public int InspectionId { get; set; }
-
-        public int InspectionFrequency { get; set; }
-
-        public bool DoNotInspect { get; set; }
+        //Constructor
+        public SculptureModel(int id, string name, string address, string placement, int inspectionId, int inspectionFrequency, bool doNotInspect)
+        {
+            _id = id;
+            _name = name;
+            _address = address;
+            _placement = placement;
+            _inspectionId = inspectionId;
+            _inspectionFrequency = inspectionFrequency;
+            _doNotInspect = doNotInspect;
+        }
     }
 }
