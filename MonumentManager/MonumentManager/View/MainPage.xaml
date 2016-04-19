@@ -13,31 +13,34 @@
         <ViewModel:MainPageViewModel/>
     </Page.DataContext>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView x:Name="TmpListView" Margin="10" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" VerticalAlignment="Top" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Height="50" Orientation="Horizontal" Padding="10" >
-                        <TextBlock Text="{Binding Id}" Margin="0,0,20,0"/>
-                        <TextBlock Text="{Binding Name}" Padding="0,0,20,0"/>
-                        <TextBlock Text="{Binding Address}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        
-        <GridView Margin="10,160,10,10" VerticalAlignment="Top" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}">
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical" Width="150" Height="150" Padding="1">
-                        <Image Width="148" Height="100" Source="ms-appx:///Assets/Square150x150Logo.png" />
-                        <TextBlock Text="{Binding Name}"></TextBlock>
-                        <TextBlock Text="{Binding Address}"></TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Common/SplitViewStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
-        <TextBlock Text="{Binding SelectedSculpture.Name}" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
-    </Grid>
+    <SplitView x:Name="ShellSplitView" DisplayMode="CompactOverlay"
+               IsPaneOpen="False" CompactPaneLength="48" OpenPaneLength="200"
+               PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
+        <SplitView.Pane>
+            <StackPanel>
+                <!-- Menu (hamburger) button -->
+                <RadioButton Style="{StaticResource SplitViewMenuButtonStyle}" Click="OnMenuButtonClicked" />
+
+                <!-- Home button -->
+                <RadioButton Tag="&#xe10f;" Content="Home" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnHomeButtonChecked" IsChecked="True" />
+
+                <!-- Temp List Button (will be the Main Sculptures Button) -->
+                <RadioButton Tag="&#xE8FD;" Content="List View" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnSearchButtonChecked" />
+
+                <!-- Temp Grid Button -->
+                <RadioButton Tag="&#xE8A9;" Content="Grid View (temp)" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnSettingsButtonChecked" />
+
+                <!-- Search Button -->
+                <RadioButton Tag="&#xE71E;" Content="Search" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnAboutButtonChecked" />
+            </StackPanel>
+        </SplitView.Pane>
+    </SplitView>
 </Page>
