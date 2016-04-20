@@ -20,7 +20,7 @@
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Width="150" Height="150" Padding="0" Background="Lavender" Margin="0,0,5,0">
-                        <Image Width="148" Height="100" Source="ms-appx:///Assets/Square150x150Logo.png" />
+                        <Image Width="150" Height="100" Source="{Binding Picture}" Stretch="UniformToFill" />
                         <TextBlock Text="{Binding Name}" Padding="5,0" Height="24"/>
                         <TextBlock Text="{Binding Address}" Padding="5,0" Height="24"/>
                     </StackPanel>
