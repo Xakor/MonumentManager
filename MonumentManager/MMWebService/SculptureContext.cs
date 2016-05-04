@@ -1,3 +1,5 @@
+using System.Web.Http;
+
 namespace MMWebService
 {
     using System;
@@ -11,6 +13,10 @@ namespace MMWebService
             : base("name=SculptureContext")
         {
             base.Configuration.ProxyCreationEnabled = false;
+
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
+
         }
 
         public virtual DbSet<DamageRecommendation> DamageRecommendation { get; set; }

@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MMWebService;
@@ -99,6 +100,67 @@ namespace MMWebService.Controllers
             db.SaveChanges();
 
             return Ok(sculptures);
+        }
+
+        // Insert with many to many 
+
+        // POST: api/Sculptures/SculptureAddTypes
+        [Route("api/Sculptures/SculptureAddTypes/{sculptureId:int}/{typeId:int}")]
+        // [HttpPost]
+
+        [HttpGet]
+        [ResponseType(typeof (Sculptures))]
+        public async Task<IHttpActionResult> GetAddTypeToSculpture(int sculptureId, int typeId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            Sculptures sculptureFound = db.Sculptures.FirstOrDefault(s => s.Sculpture_Id == sculptureId);
+            Types typeFound = db.Types.FirstOrDefault(t => t.Type_Id == typeId);
+
+            sculptureFound.Types.Add(typeFound);
+
+            //db.Hotels.Remove(hotelFound);
+            //try
+            //{
+            //    await db.SaveChangesAsync();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (HotelExists(hotel.Hotel_No))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+            //db.Hotels.Add(hotel);
+            //db.Hotels.Add(hotel);
+
+            db.Entry(sculptureFound).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (SculpturesExists(sculptureFound.Sculpture_Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+
+            return CreatedAtRoute("DefaultApi", new { id = sculptureFound.Sculpture_Id }, sculptureFound);
+
         }
 
         protected override void Dispose(bool disposing)
