@@ -22,6 +22,11 @@ namespace MMWebService.Controllers
         {
             return db.Sculptures;
         }
+        // Get types
+        public IQueryable<Sculptures> GetSculptureTypes()
+        {
+            return db.Sculptures.Include(t => t.Types);
+        }
 
         // GET: api/Sculptures/5
         [ResponseType(typeof(Sculptures))]
@@ -106,11 +111,10 @@ namespace MMWebService.Controllers
 
         // POST: api/Sculptures/SculptureAddTypes
         [Route("api/Sculptures/SculptureAddTypes/{sculptureId:int}/{typeId:int}")]
-        // [HttpPost]
-
-        [HttpGet]
+        [HttpPost]
+        
         [ResponseType(typeof (Sculptures))]
-        public async Task<IHttpActionResult> GetAddTypeToSculpture(int sculptureId, int typeId)
+        public async Task<IHttpActionResult> PostAddTypeToSculpture(int sculptureId, int typeId)
         {
             if (!ModelState.IsValid)
             {
@@ -118,28 +122,9 @@ namespace MMWebService.Controllers
             }
             Sculptures sculptureFound = db.Sculptures.FirstOrDefault(s => s.Sculpture_Id == sculptureId);
             Types typeFound = db.Types.FirstOrDefault(t => t.Type_Id == typeId);
-
+            
             sculptureFound.Types.Add(typeFound);
-
-            //db.Hotels.Remove(hotelFound);
-            //try
-            //{
-            //    await db.SaveChangesAsync();
-            //}
-            //catch (DbUpdateException)
-            //{
-            //    if (HotelExists(hotel.Hotel_No))
-            //    {
-            //        return Conflict();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-            //db.Hotels.Add(hotel);
-            //db.Hotels.Add(hotel);
-
+          
             db.Entry(sculptureFound).State = EntityState.Modified;
 
             try
@@ -157,11 +142,25 @@ namespace MMWebService.Controllers
                     throw;
                 }
             }
-
-
-            return CreatedAtRoute("DefaultApi", new { id = sculptureFound.Sculpture_Id }, sculptureFound);
-
+            return Ok(sculptureFound);
         }
+
+        // From a controller to extract types for a certain sculpture specified by sculptureid
+        //[Route("api/SculptureTypeView/{Sculpture_Id:int}")]
+        //[HttpGet]
+        //[ResponseType(typeof(Types))]
+        //public IQueryable<Types> GetAllSculptureTypes(int sculpture_Id)
+        //{
+        //    IQueryable<Types> materials = from n in db.SculptureTypeView
+        //                                  where n.Sculpture_Id == sculpture_Id
+        //                                  select new Types()
+        //                                  {
+        //                                      Type_Name = n.Type_Name,
+        //                                      Type_Id = n.Type_Id
+        //                                  };
+        //    return materials;
+        //}
+
 
         protected override void Dispose(bool disposing)
         {
