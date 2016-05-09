@@ -8,15 +8,15 @@
     x:Class="MonumentManager.View.ListPage"
     mc:Ignorable="d">
 
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <ViewModel:MainPageViewModel/>
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <Grid Background="LightGray">
         <Rectangle Height="48" Fill="Lavender" VerticalAlignment="Top" />
         <TextBlock Text="List View"  FontFamily="Segoe UI" FontSize="20" LineHeight="24" FontWeight="SemiLight" Padding="10, 10, 0, 0"/>
         
-        <ListView x:Name="TmpListView" Margin="10,48,10,10" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}" IsTabStop="False">
+        <ListView x:Name="TmpListView" Margin="0,48,0,0" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}" IsTabStop="False" Padding="10,0,20,10" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

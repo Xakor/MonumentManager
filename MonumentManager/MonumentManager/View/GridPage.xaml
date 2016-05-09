@@ -8,15 +8,15 @@
     x:Class="MonumentManager.View.GridPage"
     mc:Ignorable="d">
 
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <ViewModel:MainPageViewModel/>
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <Grid Background="LightGray">
         <Rectangle Height="48" Fill="Lavender" VerticalAlignment="Top" />
-        <TextBlock Text="Grid View"  FontFamily="Segoe UI" FontSize="20" LineHeight="24" FontWeight="SemiLight" Padding="10, 10, 0, 0"/>
+        <TextBlock Text="Grid View" FontFamily="Segoe UI" FontSize="20" LineHeight="24" FontWeight="SemiLight" Padding="10, 10, 0, 0"/>
 
-        <GridView Margin="10,58,10,10" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}" Padding="0">
+        <GridView Margin="0,48,0,0" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}" Padding="10" ItemClick="GridView_ItemClick">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Width="150" Height="150" Padding="0" Background="Lavender" Margin="0,0,5,5">

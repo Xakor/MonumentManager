@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -41,25 +42,34 @@ namespace MonumentManager.View
                 ((Frame)ShellSplitView.Content).Navigate(typeof(LandingPage));
         }
 
-        private void OnSearchButtonChecked(object sender, RoutedEventArgs e)
+        private void OnListButtonChecked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(ListPage));
         }
 
-        private void OnSettingsButtonChecked(object sender, RoutedEventArgs e)
+        private void OnGridButtonChecked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(GridPage));
         }
 
-        private void OnAboutButtonChecked(object sender, RoutedEventArgs e)
+        private void OnSearchButtonChecked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(SearchPage));
         }
+
+        public void OnDetailsButtonChecked(object sender, RoutedEventArgs e)
+        {
+            ShellSplitView.IsPaneOpen = false;
+            if ( ShellSplitView.Content != null)
+                ((Frame) ShellSplitView.Content).Navigate(typeof (DetailsPage));
+            
+        }
+        
     }
 }
