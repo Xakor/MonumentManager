@@ -35,7 +35,7 @@ namespace MonumentManager.Handler
             // make a new instance of persistency class and pass on save method with the parameter we created above 
             new PersistencyFacade().SaveSculpture(sculpture);
 
-            //HotelViewModel.HotelCatalogSingleton.Hotels.Add(hotel);
+           
             // we do this because we want to get an update on the hotels 
             // once we have added a new one
             var sculptures = new PersistencyFacade().GetSculptures();
@@ -46,9 +46,7 @@ namespace MonumentManager.Handler
                 MainPageViewModel.SculptureCatalogSingleton.Sculptures.Add(sculpt);
             }
 
-            //HotelViewModel.NewHotel.Hotel_No = 0;
-            //HotelViewModel.NewHotel.HotelName = "";
-            //HotelViewModel.NewHotel.HotelAddress = "";
+            
 
 
 
