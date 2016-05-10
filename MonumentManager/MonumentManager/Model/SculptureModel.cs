@@ -13,10 +13,11 @@ namespace MonumentManager.Model
         private string _name;
         private string _address;
         private string _placement;
-        private string _picture;
-        private int _inspectionId;
+        private int _picture;
         private int _inspectionFrequency;
         private bool _doNotInspect;
+        private string _material;
+        private string _type;
 
         //Properties
         public int Id
@@ -39,15 +40,10 @@ namespace MonumentManager.Model
             get { return _placement; }
             set { _placement = value; }
         }
-        public string Picture
+        public int Picture
         {
             get { return _picture; }
             set { _picture = value; }
-        }
-        public int InspectionId
-        {
-            get { return _inspectionId; }
-            set { _inspectionId = value; }
         }
         public int InspectionFrequency
         {
@@ -60,17 +56,35 @@ namespace MonumentManager.Model
             set { _doNotInspect = value; }
         }
 
+        public string Material
+        {
+            get { return _material; }
+            set { _material = value; }
+        }
+
+        public string Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
         //Constructor
-        public SculptureModel(int id, string name, string address, string placement, string picture, int inspectionId, int inspectionFrequency, bool doNotInspect)
+        public SculptureModel(int id, string name, string address, string placement, int picture, int inspectionFrequency, bool doNotInspect, string material, string type)
         {
             _id = id;
             _name = name;
             _address = address;
             _placement = placement;
             _picture = picture;
-            _inspectionId = inspectionId;
             _inspectionFrequency = inspectionFrequency;
             _doNotInspect = doNotInspect;
+            _material = material;
+            _type = type;
+        }
+
+        public SculptureModel()
+        {
+            
         }
     }
 }

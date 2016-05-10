@@ -12,7 +12,8 @@ namespace MonumentManager.Model
         //Properties
         public int Id { get; set; }
         public string Name { get; set; }
-        public int CareRecommendationId { get; set; }
+        public int CareRecommendation { get; set; }
         public int CareFrequency { get; set; }
+        public int sculptureId { get; set; }
     }
 }
