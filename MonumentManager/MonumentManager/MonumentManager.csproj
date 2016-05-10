@@ -96,6 +96,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Handler\SculptureHandler.cs" />
     <Compile Include="Model\DamageModel.cs" />
     <Compile Include="Model\InspectionModel.cs" />
     <Compile Include="Model\SculptureCatalogSingleton.cs" />

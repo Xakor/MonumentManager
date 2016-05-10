@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MonumentManager.Persistency;
 
 namespace MonumentManager.Model
 {
@@ -21,17 +22,21 @@ namespace MonumentManager.Model
         //Actual Hotel Collection
         public ObservableCollection<SculptureModel> Sculptures { get; set; }
 
+
         private SculptureCatalogSingleton()
         {
             Sculptures = new ObservableCollection<SculptureModel>();
-            //These three should be commented out or removed once we import data from our database
-           
 
-            //This is to get data from the database, dont think about for now!
-            //Sculptures = new ObservableCollection<SculptureModel>(new PersistenceFacade().GetSculptures());
+            //This is to get data from the database
+            Sculptures = new ObservableCollection<SculptureModel>(new PersistencyFacade().GeSculptures());
+            //This is to get data from the database
+            
         }
 
         //Add to SculptureCatalog Method
-       
+        public void Add(int Sculpture_Id, string Sculpture_Name, string Sculpture_Address,string Sculpture_InsFreq, string Sculpture_Placement, int Sculpture_Picture, bool Sculpture_DNI, string Sculpture_Material, string Sculpture_Type)
+        {
+            Sculptures.Add(new SculptureModel( Sculpture_Id,Sculpture_Name,Sculpture_Address,Sculpture_InsFreq,Sculpture_Placement,Sculpture_Picture,Sculpture_DNI,Sculpture_Material,Sculpture_Type));
+        }
     }
 }
