@@ -132,6 +132,8 @@
     <None Include="MonumentManager_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Logo\BigLogo.png" />
+    <Content Include="Assets\Logo\BigLogo_1240x600.png" />
     <Content Include="Assets\Pictures\Picture1_havfrue.jpg" />
     <Content Include="Assets\Pictures\Picture2_loever.jpg" />
     <Content Include="Assets\Pictures\Picture3_rytter.jpg" />
