@@ -22,6 +22,7 @@
     </Page.Resources>
 
     <SplitView x:Name="ShellSplitView" DisplayMode="CompactOverlay"
+               x:FieldModifier="public" 
                IsPaneOpen="False" CompactPaneLength="48" OpenPaneLength="200"
                PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
         <SplitView.Pane>
@@ -39,7 +40,7 @@
                 <RadioButton Tag="&#xE8A9;" Content="Grid View (temp)" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnGridButtonChecked" />
 
                 <!-- Temp Details Page -->
-                <RadioButton Tag="&#xE7C3;" Content="Details (temp)" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnDetailsButtonChecked" />
+                <RadioButton x:Name="DetailsPageRadioButton" Tag="&#xE7C3;" Content="Details (temp)" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnDetailsButtonChecked"/>
 
                 <!-- Search Button -->
                 <RadioButton Tag="&#xE71E;" Content="Search" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnSearchButtonChecked" />

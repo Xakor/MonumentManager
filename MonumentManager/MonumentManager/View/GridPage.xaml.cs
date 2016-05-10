@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MonumentManager.Annotations;
 using MonumentManager.Model;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -26,12 +27,13 @@ namespace MonumentManager.View
         public GridPage()
         {
             this.InitializeComponent();
+            MainPage Main = new MainPage(this.Frame);
 
         }
 
-        public void GridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //Frame.Navigate();
-        }
+        //public void GridView_ItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    MainPage.
+        //}
     }
 }

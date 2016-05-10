@@ -8,9 +8,9 @@
     x:Class="MonumentManager.View.ListPage"
     mc:Ignorable="d">
 
-    <!--<Page.DataContext>
+    <Page.DataContext>
         <ViewModel:MainPageViewModel/>
-    </Page.DataContext>-->
+    </Page.DataContext>
 
     <Grid Background="LightGray">
         <Rectangle Height="48" Fill="Lavender" VerticalAlignment="Top" />

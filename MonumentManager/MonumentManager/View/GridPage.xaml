@@ -16,7 +16,7 @@
         <Rectangle Height="48" Fill="Lavender" VerticalAlignment="Top" />
         <TextBlock Text="Grid View" FontFamily="Segoe UI" FontSize="20" LineHeight="24" FontWeight="SemiLight" Padding="10, 10, 0, 0"/>
 
-        <GridView Margin="0,48,0,0" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}" Padding="10" ItemClick="GridView_ItemClick">
+        <GridView Margin="0,48,0,0" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}" Padding="10">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Width="150" Height="150" Padding="0" Background="Lavender" Margin="0,0,5,5">
