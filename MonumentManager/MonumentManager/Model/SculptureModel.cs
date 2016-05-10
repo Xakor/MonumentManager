@@ -17,6 +17,8 @@ namespace MonumentManager.Model
         private int _inspectionId;
         private int _inspectionFrequency;
         private bool _doNotInspect;
+        private string _material;
+        private string _type;
 
         //Properties
         public int Id
@@ -60,8 +62,20 @@ namespace MonumentManager.Model
             set { _doNotInspect = value; }
         }
 
+        public string Material
+        {
+            get { return _material; }
+            set { _material = value; }
+        }
+
+        public string Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
         //Constructor
-        public SculptureModel(int id, string name, string address, string placement, string picture, int inspectionId, int inspectionFrequency, bool doNotInspect)
+        public SculptureModel(int id, string name, string address, string placement, string picture, int inspectionId, int inspectionFrequency, bool doNotInspect, string material, string type)
         {
             _id = id;
             _name = name;
@@ -71,6 +85,8 @@ namespace MonumentManager.Model
             _inspectionId = inspectionId;
             _inspectionFrequency = inspectionFrequency;
             _doNotInspect = doNotInspect;
+            _material = material;
+            _type = type;
         }
     }
 }
