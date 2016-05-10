@@ -16,7 +16,7 @@ namespace MonumentManager.Model
 
         public static SculptureCatalogSingleton Instance
         {
-            get { return instance; }
+            get { return instance; } // get{return instance ?? new SculptureCatalogSingleton();}
         }
 
         //Actual Hotel Collection
@@ -25,10 +25,10 @@ namespace MonumentManager.Model
 
         private SculptureCatalogSingleton()
         {
-            Sculptures = new ObservableCollection<SculptureModel>();
+            //Sculptures = new ObservableCollection<SculptureModel>();
 
             //This is to get data from the database
-            Sculptures = new ObservableCollection<SculptureModel>(new PersistencyFacade().GeSculptures());
+            Sculptures = new ObservableCollection<SculptureModel>(new PersistencyFacade().GetSculptures());
             //This is to get data from the database
             
         }
