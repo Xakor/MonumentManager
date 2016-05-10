@@ -13,7 +13,7 @@ namespace MonumentManager.Model
         private string _name;
         private string _address;
         private string _placement;
-        private int _picture;
+        private string _picture;
         private int _inspectionFrequency;
         private bool _doNotInspect;
         private string _material;
@@ -40,7 +40,7 @@ namespace MonumentManager.Model
             get { return _placement; }
             set { _placement = value; }
         }
-        public int Picture
+        public string Picture
         {
             get { return _picture; }
             set { _picture = value; }
@@ -69,7 +69,7 @@ namespace MonumentManager.Model
         }
 
         //Constructor
-        public SculptureModel(int id, string name, string address, string placement, int picture, int inspectionFrequency, bool doNotInspect, string material, string type)
+        public SculptureModel(int id, string name, string address, string placement, string picture, int inspectionFrequency, bool doNotInspect, string material, string type)
         {
             _id = id;
             _name = name;
