@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ViewModel="using:MonumentManager.ViewModel"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="MonumentManager.View.GridPage"
     mc:Ignorable="d">
     <Page.Resources>
@@ -19,7 +20,7 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton x:Name="AppBarButtonAddSculpture" HorizontalAlignment="Stretch" Icon="Add" Label="Add Sculpture" VerticalAlignment="Stretch" d:LayoutOverrides="Height"/>
+            <AppBarButton x:Name="AppBarButtonAddSculpture" HorizontalAlignment="Stretch" Icon="Add" Label="Add Sculpture" VerticalAlignment="Stretch" d:LayoutOverrides="Height" />
             <AppBarButton x:Name="AppBarButtonDelSculpture" HorizontalAlignment="Stretch" Icon="Delete" Label="Delete Sculpture" VerticalAlignment="Stretch" d:LayoutOverrides="Height"/>
             <AppBarSeparator d:LayoutOverrides="Width, Height"/>
             <AppBarButton x:Name="appBarButtonSortSculptureFlyout" HorizontalAlignment="Stretch" Icon="Sort" Label="appbarbutton" VerticalAlignment="Stretch" d:LayoutOverrides="Height" Flyout="{StaticResource DeclarativeAttachedFlyout2}"/>
