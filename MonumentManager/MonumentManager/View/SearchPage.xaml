@@ -9,7 +9,7 @@
 
     <Grid Background="LightGray">
         <Rectangle Height="48" Fill="Lavender" VerticalAlignment="Top" />
-        <TextBlock Text="Search Page" FontSize="16" FontWeight="Bold" Height="48" VerticalAlignment="Top" Padding="10, 10, 0, 0"/>
+        <TextBlock Text="Search"  FontFamily="Segoe UI" FontSize="20" LineHeight="24" FontWeight="SemiLight" Padding="10, 10, 0, 0"/>
         <TextBlock Text="&#xe11a;" FontFamily="Segoe MDL2 Assets" FontSize="300" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </Grid>
 </Page>
