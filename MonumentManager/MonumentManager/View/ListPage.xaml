@@ -7,15 +7,33 @@
     xmlns:ViewModel="using:MonumentManager.ViewModel"
     x:Class="MonumentManager.View.ListPage"
     mc:Ignorable="d">
+    <Page.Resources>
+        <MenuFlyout x:Key="DeclarativeAttachedFlyout2">
+            <MenuFlyoutItem Text="Sort by: ID Number" />
+            <MenuFlyoutItem Text="Sort by: Name" />
+            <MenuFlyoutItem Text="Sort by: Address" />
+        </MenuFlyout>
+    </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton x:Name="AppBarButtonAddSculpture" HorizontalAlignment="Stretch" Icon="Add" Label="Add Sculpture" VerticalAlignment="Stretch" d:LayoutOverrides="Height"/>
+            <AppBarButton x:Name="AppBarButtonDelSculpture" HorizontalAlignment="Stretch" Icon="Delete" Label="Delete Sculpture" VerticalAlignment="Stretch" d:LayoutOverrides="Height"/>
+            <AppBarSeparator d:LayoutOverrides="Width, Height"/>
+            <AppBarButton x:Name="appBarButtonSortSculptureFlyout" HorizontalAlignment="Stretch" Icon="Sort" Label="appbarbutton" VerticalAlignment="Stretch" d:LayoutOverrides="Height" Flyout="{StaticResource DeclarativeAttachedFlyout2}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <ViewModel:MainPageViewModel/>
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <Grid Background="LightGray">
         <Rectangle Height="48" Fill="Lavender" VerticalAlignment="Top" />
         <TextBlock Text="List View"  FontFamily="Segoe UI" FontSize="20" LineHeight="24" FontWeight="SemiLight" Padding="10, 10, 0, 0"/>
-        
+
         <ListView x:Name="TmpListView" Margin="0,48,0,0" ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" SelectedItem="{Binding SelectedSculpture, Mode=TwoWay}" IsTabStop="False" Padding="10,0,20,10" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
@@ -24,7 +42,7 @@
                     <Setter Property="Padding" Value="3"></Setter>
                 </Style>
             </ListView.ItemContainerStyle>
-            
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Height="50" Orientation="Horizontal" Background="Lavender" Margin="0,0,0,0">
