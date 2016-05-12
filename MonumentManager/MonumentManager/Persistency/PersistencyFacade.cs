@@ -72,7 +72,118 @@ namespace MonumentManager.Persistency
                     new MessageDialog(ex.Message).ShowAsync();
                 }
             }
+        }
+
+        public void DeleteSculpture(SculptureModel selectedSculpture) //here we are passing on the selected sculpture to the method
+        {
+
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //this is to delete by sculpture id
+                //var selsculpt = selectedSculpture.Id; 
+
+                try
+                {
+                    if (selectedSculpture == null)
+                    {
+                        new MessageDialog("Sculpture not selected").ShowAsync();
+                    }
+                    else
+                    {
+                        string deleteUrl = "api/Sculptures/" + selectedSculpture;
+                        var response = client.DeleteAsync(deleteUrl);
+                    }
+
+
+                }
+                catch (Exception e)
+                {
+                    new MessageDialog(e.Message).ShowAsync();
+                }
+            }
 
         }
+
+
+        //    public void SaveInspection(InspectionModel inspection)
+        //    {
+        //        using (var client = new HttpClient(handler))
+        //        {
+        //            client.BaseAddress = new Uri(ServerUrl);
+        //            client.DefaultRequestHeaders.Clear();
+        //            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //            try
+        //            {
+        //                string postBody = JsonConvert.SerializeObject(inspection);
+        //                var response =
+        //                    client.PostAsync("api/Inspections",
+        //                        new StringContent(postBody, Encoding.UTF8, "application/json")).Result;
+
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                new MessageDialog(ex.Message).ShowAsync();
+        //            }
+        //        }
+        //    }
+
+        //    public List<InspectionModel> GetInspections()
+        //    {
+        //        using (var client = new HttpClient(handler))
+        //        {
+        //            client.BaseAddress = new Uri(ServerUrl);
+        //            client.DefaultRequestHeaders.Clear();
+        //            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //            try
+        //            {
+        //                var response = client.GetAsync("api/Inspections").Result;
+
+        //                if (response.IsSuccessStatusCode)
+        //                {
+        //                    var inspectionsList = response.Content.ReadAsAsync<IEnumerable<InspectionModel>>().Result;
+        //                    return inspectionsList.ToList();
+        //                }
+
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                new MessageDialog(ex.Message).ShowAsync();
+        //            }
+        //            return null;
+        //        }
+
+        //    }
+
+        //    public List<DamageModel> GetDamages()
+        //    {
+        //        using (var client = new HttpClient(handler))
+        //        {
+        //            client.BaseAddress = new Uri(ServerUrl);
+        //            client.DefaultRequestHeaders.Clear();
+        //            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //            try
+        //            {
+        //                var response = client.GetAsync("api/Damages").Result;
+
+        //                if (response.IsSuccessStatusCode)
+        //                {
+        //                    var damagesList = response.Content.ReadAsAsync<IEnumerable<DamageModel>>().Result;
+        //                    return damagesList.ToList();
+        //                }
+
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                new MessageDialog(ex.Message).ShowAsync();
+        //            }
+        //            return null;
+        //        }
+
+        //    }
     }
 }

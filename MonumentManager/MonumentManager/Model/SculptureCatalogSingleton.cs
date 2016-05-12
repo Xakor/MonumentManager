@@ -11,7 +11,7 @@ namespace MonumentManager.Model
 {
     class SculptureCatalogSingleton
     {
-        //Instanciate the singleton
+        //Here we instanciate the singleton
         private static SculptureCatalogSingleton _instance; // = new SculptureCatalogSingleton();
 
         public static SculptureCatalogSingleton Instance
@@ -19,15 +19,18 @@ namespace MonumentManager.Model
             get { return _instance ?? new SculptureCatalogSingleton();  }
         }
 
-        //Actual Hotel Collection
+        //Actual  Collections
         public ObservableCollection<SculptureModel> Sculptures { get; set; }
-
+       // public ObservableCollection<InspectionModel> Inspections { get; set; }
+        //public ObservableCollection<DamageModel> Damages { get; set; }
 
         private SculptureCatalogSingleton()
         {
-            //Sculptures = new ObservableCollection<SculptureModel>();
+            
             //This is to get data from the database
             Sculptures = new ObservableCollection<SculptureModel>(new PersistencyFacade().GetSculptures());
+           // Inspections = new ObservableCollection<InspectionModel>(new PersistencyFacade().GetInspections());
+           // Damages = new ObservableCollection<DamageModel>(new PersistencyFacade().GetDamages());
 
             //This is to get data from the database
 
@@ -38,5 +41,10 @@ namespace MonumentManager.Model
         {
             Sculptures.Add(new SculptureModel( sculptureId,sculptureName,sculptureAddress, sculpturePlacement, sculpturePicture, sculptureInsFreq, sculptureDNI, sculptureMaterial, sculptureType));
         }
+
+        //public void Add2(int id, DateTime date, int sculptureID, string noteTitle, string noteContent )
+        //{
+        //    Inspections.Add(new InspectionModel(id,date,sculptureID,noteTitle,noteContent));
+        //}
     }
 }

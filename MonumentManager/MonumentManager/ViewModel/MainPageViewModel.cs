@@ -37,7 +37,7 @@ namespace MonumentManager.ViewModel
             SortListNumericallyCommand = new RelayCommand(SculptureHandler.SortListNumerically);
             SortListByAddressCommand = new RelayCommand(SculptureHandler.SortListByAddress);
             AddDamageCommand = new RelayCommand(SculptureHandler.AddDamage);
-            AddInspectionCommand = new RelayCommand(SculptureHandler.AddInspection);
+            //AddInspectionCommand = new RelayCommand(SculptureHandler.AddInspection);
 
         }
         // handler property 
@@ -60,7 +60,8 @@ namespace MonumentManager.ViewModel
         public ICommand AddInspectionCommand { get; set; }
         public ICommand AddDamageCommand { get; set; }
 
-        //Selected Item from lists
+        // this is a new instance of the sculptureModel class 
+        // now we can acces its properties through the AddSculpture method in the handler
         private SculptureModel _selectedSculpture;
 
         public SculptureModel SelectedSculpture
@@ -69,6 +70,17 @@ namespace MonumentManager.ViewModel
             set { _selectedSculpture = value; OnPropertyChanged(); }
         }
 
+        // this is a new instance of the inspectionmodel class 
+        // now we can acces its properties through the AddInscpections method in the handler
+
+        //private InspectionModel _selectedInspection;
+
+        //public InspectionModel SelectedInspection
+        //{
+        //    get { return _selectedInspection; }
+        //    set { _selectedInspection = value; OnPropertyChanged(); }
+        //}
+        
         //Implement INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
