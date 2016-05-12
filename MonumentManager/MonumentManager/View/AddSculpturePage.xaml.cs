@@ -25,6 +25,26 @@ namespace MonumentManager.View
         public AddSculpturePage()
         {
             this.InitializeComponent();
+            NameBox.Text = String.Empty;
+            AddressBox.Text = String.Empty;
+            PlacementBox.Text = String.Empty;
+            MaterialsBox.Text = String.Empty;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Implement Click event/Command that adds the sculpture to the database
+            Frame.Navigate(typeof(ListPage));
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            InsFreqBox.IsEnabled = false;
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            InsFreqBox.IsEnabled = true;
         }
     }
 }

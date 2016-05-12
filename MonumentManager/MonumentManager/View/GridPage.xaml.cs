@@ -31,6 +31,11 @@ namespace MonumentManager.View
 
         }
 
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof (ListPage));
+        }
+
         //public void GridView_ItemClick(object sender, ItemClickEventArgs e)
         //{
         //    MainPage.

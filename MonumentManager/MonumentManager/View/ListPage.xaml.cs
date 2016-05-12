@@ -26,5 +26,15 @@ namespace MonumentManager.View
         {
             this.InitializeComponent();
         }
+
+        private void AppBarButtonAddSculpture_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof (AddSculpturePage));
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof (GridPage));
+        }
     }
 }
