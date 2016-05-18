@@ -10,7 +10,7 @@ namespace MMwebservice
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sculptures()
-        {//stuff
+        {
             Damages = new HashSet<Damages>();
             Inspections = new HashSet<Inspections>();
             SculptureValues = new HashSet<SculptureValues>();

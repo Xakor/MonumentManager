@@ -95,7 +95,7 @@ namespace MonumentManager.Persistency
                     }
                     else
                     {
-                        string deleteUrl = "api/Sculptures/" + selectedSculpture;
+                        string deleteUrl = "api/Sculptures/" + selectedSculpture.Id;
                         var response = client.DeleteAsync(deleteUrl);
                     }
 

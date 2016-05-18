@@ -40,11 +40,17 @@ namespace MonumentManager.View
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             InsFreqBox.IsEnabled = false;
+            InsFreqBox.SelectedIndex = 0;
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             InsFreqBox.IsEnabled = true;
+        }
+
+        private void InsFreqBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

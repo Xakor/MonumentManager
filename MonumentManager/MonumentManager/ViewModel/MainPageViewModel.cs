@@ -33,10 +33,10 @@ namespace MonumentManager.ViewModel
             //commands 
             AddSculptureCommand = new RelayCommand(SculptureHandler.AddSculpture);
             DelSculptureCommand = new RelayCommand(SculptureHandler.DelSculpture);
-            SortListAlphabeticallyCommand = new RelayCommand(SculptureHandler.SortListAlphabetically);
-            SortListNumericallyCommand = new RelayCommand(SculptureHandler.SortListNumerically);
-            SortListByAddressCommand = new RelayCommand(SculptureHandler.SortListByAddress);
-            AddDamageCommand = new RelayCommand(SculptureHandler.AddDamage);
+           // SortListAlphabeticallyCommand = new RelayCommand(SculptureHandler.SortListAlphabetically);
+            //SortListNumericallyCommand = new RelayCommand(SculptureHandler.SortListNumerically);
+           // SortListByAddressCommand = new RelayCommand(SculptureHandler.SortListByAddress);
+            //AddDamageCommand = new RelayCommand(SculptureHandler.AddDamage);
             //AddInspectionCommand = new RelayCommand(SculptureHandler.AddInspection);
 
         }
@@ -51,14 +51,14 @@ namespace MonumentManager.ViewModel
         public ICommand DelSculptureCommand { get; set; }
 
         // Sort commands
-        public ICommand SortListAlphabeticallyCommand { get; set; }
-        public ICommand SortListNumericallyCommand { get; set; }
-        public ICommand SortListByAddressCommand { get; set; }
+        //public ICommand SortListAlphabeticallyCommand { get; set; }
+        //public ICommand SortListNumericallyCommand { get; set; }
+        //public ICommand SortListByAddressCommand { get; set; }
 
         // Inspection & Damage commands
 
-        public ICommand AddInspectionCommand { get; set; }
-        public ICommand AddDamageCommand { get; set; }
+        //public ICommand AddInspectionCommand { get; set; }
+        //public ICommand AddDamageCommand { get; set; }
 
         // this is a new instance of the sculptureModel class 
         // now we can acces its properties through the AddSculpture method in the handler

@@ -21,6 +21,9 @@ namespace MonumentManager.Model
         private string _type;
 
         //Properties
+        // we add this json property because we need to point directly to the tables attributes 
+        //because the names of the class properties are different
+
         [JsonProperty(PropertyName = "Sculpture_Id")]
         public int Id
         {
@@ -75,7 +78,7 @@ namespace MonumentManager.Model
             get { return _type; }
             set { _type = value; }
         }
-
+        // Empty constructor
         public SculptureModel()
         {
             

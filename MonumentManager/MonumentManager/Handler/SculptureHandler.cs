@@ -81,7 +81,10 @@ namespace MonumentManager.Handler
             new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture);
 
             //refresh collection
-            UpdateSculptureCollection();
+            //UpdateSculptureCollection();
+
+           
+            
         }
 
         public void SortListByAddress()

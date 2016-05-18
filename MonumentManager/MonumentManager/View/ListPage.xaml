@@ -20,7 +20,7 @@
                 <Grid/>
             </CommandBar.Content>
             <AppBarButton x:Name="AppBarButtonAddSculpture" HorizontalAlignment="Stretch" Icon="Add" Label="Add Sculpture" VerticalAlignment="Stretch" d:LayoutOverrides="Height" Click="AppBarButtonAddSculpture_Click"/>
-            <AppBarButton x:Name="AppBarButtonDelSculpture" HorizontalAlignment="Stretch" Icon="Delete" Label="Delete Sculpture" VerticalAlignment="Stretch" d:LayoutOverrides="Height"/>
+            <AppBarButton x:Name="AppBarButtonDelSculpture" HorizontalAlignment="Stretch" Icon="Delete" Label="Delete Sculpture" VerticalAlignment="Stretch" d:LayoutOverrides="Height" Command="{Binding DelSculptureCommand}"/>
             <AppBarSeparator d:LayoutOverrides="Width, Height"/>
             <AppBarButton x:Name="appBarButtonSortSculptureFlyout" HorizontalAlignment="Stretch" Icon="Sort" Label="appbarbutton" VerticalAlignment="Stretch" d:LayoutOverrides="Height" Flyout="{StaticResource DeclarativeAttachedFlyout2}"/>
         </CommandBar>
