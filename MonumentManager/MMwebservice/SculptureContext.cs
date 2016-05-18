@@ -1,3 +1,5 @@
+using System.Web.Http;
+
 namespace MMwebservice
 {
     using System;
@@ -11,6 +13,11 @@ namespace MMwebservice
             : base("name=SculptureContext")
         {
             base.Configuration.ProxyCreationEnabled = false;
+            // because the damages refer to sculpture and sculpture refers to damages, we need to handle the endless loop as below
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            // because we have the data in json format we need to remove the xml format 
+            GlobalConfiguration.Configuration.Formatters.Remove(
+                GlobalConfiguration.Configuration.Formatters.XmlFormatter);
         }
 
         public virtual DbSet<Damages> Damages { get; set; }

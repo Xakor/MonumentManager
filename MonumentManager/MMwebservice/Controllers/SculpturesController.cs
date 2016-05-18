@@ -19,7 +19,7 @@ namespace MMwebservice.Controllers
         // GET: api/Sculptures
         public IQueryable<Sculptures> GetSculptures()
         {
-            return db.Sculptures;
+            return db.Sculptures.Include(d => d.Damages).Include(i => i.Inspections); //return db.Sculptures
         }
 
         // GET: api/Sculptures/5
