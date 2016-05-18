@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace MonumentManager.Model
 {
@@ -20,52 +21,64 @@ namespace MonumentManager.Model
         private string _type;
 
         //Properties
+        [JsonProperty(PropertyName = "Sculpture_Id")]
         public int Id
         {
             get { return _id; }
             set { _id = value; }
         }
+        [JsonProperty(PropertyName = "Sculpture_Name")]
         public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
+        [JsonProperty(PropertyName = "Sculpture_Address")]
         public string Address
         {
             get { return _address; }
             set { _address = value; }
         }
+        [JsonProperty(PropertyName = "Sculpture_Placement")]
         public string Placement
         {
             get { return _placement; }
             set { _placement = value; }
         }
+        [JsonProperty(PropertyName = "Sculpture_Picture")]
         public string Picture
         {
             get { return _picture; }
             set { _picture = value; }
         }
+        [JsonProperty(PropertyName = "Sculpture_InsFreq")]
         public int InspectionFrequency
         {
             get { return _inspectionFrequency; }
             set { _inspectionFrequency = value; }
         }
+        [JsonProperty(PropertyName = "Sculpture_DNI")]
         public bool DoNotInspect
         {
             get { return _doNotInspect; }
             set { _doNotInspect = value; }
         }
-
+        [JsonProperty(PropertyName = "Sculpture_Material")]
         public string Material
         {
             get { return _material; }
             set { _material = value; }
         }
-
+        [JsonProperty(PropertyName = "Sculpture_Type")]
         public string Type
         {
             get { return _type; }
             set { _type = value; }
+        }
+
+        public SculptureModel()
+        {
+            
         }
 
         //Constructor
@@ -82,9 +95,5 @@ namespace MonumentManager.Model
             _type = type;
         }
 
-        public SculptureModel()
-        {
-            
-        }
     }
 }
