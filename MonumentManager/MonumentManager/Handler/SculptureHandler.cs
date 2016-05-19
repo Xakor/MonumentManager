@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace MonumentManager.Handler
         public void UpdateSculptureCollection()
         {
             var sculptures = new PersistencyFacade().GetSculptures();
+            //var sculptures = new ObservableCollection<SculptureModel>(new PersistencyFacade().GetSculptures());
 
             MainPageViewModel.SculptureCatalogSingleton.Sculptures.Clear();
             foreach (var sculpt in sculptures)
@@ -81,10 +83,10 @@ namespace MonumentManager.Handler
             new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture);
 
             //refresh collection
-            //UpdateSculptureCollection();
+             UpdateSculptureCollection();
 
-           
-            
+           // MainPageViewModel.SculptureCatalogSingleton.Sculptures.RemoveAt(MainPageViewModel.SelectedSculpture.Id);
+
         }
 
         public void SortListByAddress()
