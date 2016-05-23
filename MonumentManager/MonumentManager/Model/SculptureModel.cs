@@ -19,7 +19,7 @@ namespace MonumentManager.Model
         private bool _doNotInspect;
         private string _material;
         private string _type;
-
+        //comment
         //Properties
         // we add this json property because we need to point directly to the tables attributes 
         //because the names of the class properties are different
