@@ -9,7 +9,20 @@
 
     <Grid Background="LightGray">
         <Rectangle Height="48" Fill="Lavender" VerticalAlignment="Top" />
-        <TextBlock Text="Search"  FontFamily="Segoe UI" FontSize="20" LineHeight="24" FontWeight="SemiLight" Padding="10, 10, 0, 0"/>
+        <TextBlock Text="Search"  FontFamily="Segoe UI" FontSize="20" LineHeight="24" FontWeight="SemiLight" Padding="10, 10, 0, 0" Margin="-4,1,4,-1"/>
         <TextBlock Text="&#xe11a;" FontFamily="Segoe MDL2 Assets" FontSize="300" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" AutomationProperties.Name="SearchBar_Grid" Margin="0,60,0,0">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Padding="5,9,5,7">
+            <TextBox x:Name="SearchBox" PlaceholderText="Search for a Sculpture..." FontSize="24" Padding="9,7,9,6" Width="400" Height="50" Margin="0,0,10,0" AcceptsReturn="True" InputScope="Text"/>
+            <Button x:Name="SearchFormBtn" Content="" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Right" FontSize="36" Click="SearchFormBtn_Click" />
+            </StackPanel>
+        </Grid>
+        <ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Rectangle Fill="Lavender" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

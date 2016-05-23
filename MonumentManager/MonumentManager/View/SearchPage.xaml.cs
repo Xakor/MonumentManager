@@ -26,5 +26,10 @@ namespace MonumentManager.View
         {
             this.InitializeComponent();
         }
+
+        private void SearchFormBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
