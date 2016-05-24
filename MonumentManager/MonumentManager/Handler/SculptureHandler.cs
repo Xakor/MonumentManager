@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 using MonumentManager.Model;
 using MonumentManager.Persistency;
 using MonumentManager.ViewModel;
+//using SculptureCatalogSingleton  = MonumentManager.Model.SculptureCatalogSingleton;
 
 namespace MonumentManager.Handler
 {
-    class SculptureHandler
+     class SculptureHandler
+
     {
+       // private static SculptureCatalogSingleton CatalogSingleton { get; } = SculptureCatalogSingleton.Instance;
+
         //reference to the view model
         public MainPageViewModel MainPageViewModel { get; set; }
         //an instance of it
@@ -27,12 +31,14 @@ namespace MonumentManager.Handler
             //var sculptures = new ObservableCollection<SculptureModel>(new PersistencyFacade().GetSculptures());
 
             MainPageViewModel.SculptureCatalogSingleton.Sculptures.Clear();
-            foreach (var sculpt in sculptures)
+            foreach (var sculpture in sculptures)
             {
-                MainPageViewModel.SculptureCatalogSingleton.Sculptures.Add(sculpt);
+                MainPageViewModel.SculptureCatalogSingleton.Sculptures.Add(sculpture);
             }
 
         }
+
+
 
         //public void UpdateInspectionCollection()
         //{
@@ -70,41 +76,71 @@ namespace MonumentManager.Handler
             {
                 MainPageViewModel.SculptureCatalogSingleton.Sculptures.Add(sculpt);
             }
-            
+
 
 
         }
+
 
         public void DelSculpture()
-        {   //this is for doing it without icommands but we can't :(
-            //var sculptureId = MainPageViewModel.SelectedSculpture.Id;
-            //await new Persistency.PersistencyFacade().DeleteSculpture(sculptureId);
+        {
 
+            //new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture);
+            
             new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture);
-
             //refresh collection
-             UpdateSculptureCollection();
+            
+            UpdateSculptureCollection();
 
-           // MainPageViewModel.SculptureCatalogSingleton.Sculptures.RemoveAt(MainPageViewModel.SelectedSculpture.Id);
-
+            // MainPageViewModel.SculptureCatalogSingleton.Sculptures.RemoveAt(MainPageViewModel.SelectedSculpture.Id);
         }
 
-        public void SortListByAddress()
-        {
-            throw new NotImplementedException();
-        }
+        //better way to do it below
 
-        public void SortListNumerically()
-        {
-            throw new NotImplementedException();
-        }
+        //public async Task DelSculpture()
+        //{
 
-        public void SortListAlphabetically()
-        {
-            throw new NotImplementedException();
-        }
+        //    await Task.Run(() => new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture));
+        //    //refresh collection
+        //    UpdateSculptureCollection();
 
-    //    public void AddInspection()
+        //    // MainPageViewModel.SculptureCatalogSingleton.Sculptures.RemoveAt(MainPageViewModel.SelectedSculpture.Id);
+
+        //}
+
+        //public static void SortCollection(string criteria)
+        //{
+        //    var sortedCollection = CatalogSingleton.Sculptures.ToList();
+
+        //    switch (criteria)
+        //    {
+        //        case "id":
+        //            sortedCollection = CatalogSingleton.Sculptures.OrderBy(x => x.Id).ToList();
+        //            break;
+        //        case "name":
+        //            sortedCollection = CatalogSingleton.Sculptures.OrderBy(x => x.Name).ToList();
+        //            break;
+        //        case "address":
+        //            sortedCollection = CatalogSingleton.Sculptures.OrderBy(x => x.Address).ToList();
+        //            break;
+        //        default:
+        //            throw new Exception(criteria);
+        //    }
+        //    // sortedCollection = sortedCollection.OrderBy(x => x.Name).ToList();
+        //    CatalogSingleton.Sculptures.Clear();
+
+        //    foreach (var sculpture in sortedCollection)
+        //    {
+        //        CatalogSingleton.Sculptures.Add(sculpture);
+        //    }
+
+
+        //}
+
+    }
+    }
+
+//    public void AddInspection()
     //    {
     //        InspectionModel inspection = new InspectionModel();
     //        inspection.sculptureId = MainPageViewModel.SelectedSculpture.Id;// not sure about this one
@@ -120,12 +156,12 @@ namespace MonumentManager.Handler
 
     //}
 
-    public void AddDamage()
-        {
-            //DamageModel damage = new DamageModel();
-            //damage.Id = MainPageViewModel.
-        }
-    }
-    }
+//    public
+//void AddDamage()
+//    {
+//        //DamageModel damage = new DamageModel();
+//        //damage.Id = MainPageViewModel.
+//    }
+
 
 
