@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -26,22 +27,26 @@ namespace MonumentManager.ViewModel
         public MainPageViewModel()
         {
             SculptureCatalogSingleton = SculptureCatalogSingleton.Instance;
+            SearchResults = new ObservableCollection<SculptureModel>();
             NewSculpture = new SculptureModel();
             //instance of the handler
             SculptureHandler = new Handler.SculptureHandler(this);
+            SearchHandler = new Handler.SearchHandler(this);
 
             //commands 
             AddSculptureCommand = new RelayCommand(SculptureHandler.AddSculpture);
             DelSculptureCommand = new RelayCommand(SculptureHandler.DelSculpture);
-           // SortListAlphabeticallyCommand = new RelayCommand(SculptureHandler.SortListAlphabetically);
+            //SortListAlphabeticallyCommand = new RelayCommand(SculptureHandler.SortListAlphabetically);
             //SortListNumericallyCommand = new RelayCommand(SculptureHandler.SortListNumerically);
-           // SortListByAddressCommand = new RelayCommand(SculptureHandler.SortListByAddress);
+            //SortListByAddressCommand = new RelayCommand(SculptureHandler.SortListByAddress);
             //AddDamageCommand = new RelayCommand(SculptureHandler.AddDamage);
             //AddInspectionCommand = new RelayCommand(SculptureHandler.AddInspection);
+            RunSearchCommand = new RelayCommand(SearchHandler.RunSearch);
 
         }
         // handler property 
         public SculptureHandler SculptureHandler { get; set; }
+        public SearchHandler SearchHandler { get; set; }
 
         //View Model Code
         public SculptureCatalogSingleton SculptureCatalogSingleton { get; set; }
@@ -69,6 +74,12 @@ namespace MonumentManager.ViewModel
             get { return _selectedSculpture; }
             set { _selectedSculpture = value; OnPropertyChanged(); }
         }
+
+        //The following properties are all related to the Search functionality
+        public ObservableCollection<SculptureModel> SearchResults { get; set; } //List of Search Results
+        public ICommand RunSearchCommand { get; set; } //The Search Button
+        public string SearchTerm { get; set; } //The text in the textbox
+
 
         // this is a new instance of the inspectionmodel class 
         // now we can acces its properties through the AddInscpections method in the handler
