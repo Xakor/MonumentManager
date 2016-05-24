@@ -7,6 +7,7 @@
     xmlns:ViewModel="using:MonumentManager.ViewModel"
     x:Class="MonumentManager.View.DetailsPage"
     mc:Ignorable="d">
+    <!-- Ayy LMAO -->
     <Page.Resources>
         <MenuFlyout x:Key="AddButtonMenuFlyout">
             <MenuFlyoutItem Text="Report a Damage" />
