@@ -35,7 +35,6 @@ namespace MonumentManager.Persistency
                 try
                 {
                     var response = client.GetAsync("api/Sculptures").Result;
-                    //var response = await client.GetAsync("api/Sculptures");
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -170,58 +169,85 @@ namespace MonumentManager.Persistency
         //        }
         //    }
 
-        //    public List<InspectionModel> GetInspections()
+        public List<InspectionModel> GetInspections()
+        {
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    var response = client.GetAsync("api/Inspections").Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var inspectionsList = response.Content.ReadAsAsync<IEnumerable<InspectionModel>>().Result;
+                        return inspectionsList.ToList();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    new MessageDialog(ex.Message).ShowAsync();
+                }
+                return null;
+            }
+
+        }
+
+        public List<DamageModel> GetDamages()
+        {
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    var response = client.GetAsync("api/Damages").Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var damagesList = response.Content.ReadAsAsync<IEnumerable<DamageModel>>().Result;
+                        return damagesList.ToList();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    new MessageDialog(ex.Message).ShowAsync();
+                }
+                return null;
+            }
+
+        }
+
+        //public List<DamageModel> GetDamages()
+        //{
+        //    using (var client = new HttpClient(handler))
         //    {
-        //        using (var client = new HttpClient(handler))
+        //        client.BaseAddress = new Uri(ServerUrl);
+        //        client.DefaultRequestHeaders.Clear();
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //        try
         //        {
-        //            client.BaseAddress = new Uri(ServerUrl);
-        //            client.DefaultRequestHeaders.Clear();
-        //            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //            try
-        //            {
-        //                var response = client.GetAsync("api/Inspections").Result;
+        //            var response = client.GetAsync("api/Damages").Result;
 
-        //                if (response.IsSuccessStatusCode)
-        //                {
-        //                    var inspectionsList = response.Content.ReadAsAsync<IEnumerable<InspectionModel>>().Result;
-        //                    return inspectionsList.ToList();
-        //                }
-
-        //            }
-        //            catch (Exception ex)
+        //            if (response.IsSuccessStatusCode)
         //            {
-        //                new MessageDialog(ex.Message).ShowAsync();
+        //                var damagesList = response.Content.ReadAsAsync<IEnumerable<DamageModel>>().Result.ToList();
+        //                return damagesList;
         //            }
-        //            return null;
+
         //        }
-
+        //        catch (Exception ex)
+        //        {
+        //            new MessageDialog(ex.Message).ShowAsync();
+        //        }
+        //        return null;
         //    }
 
-        //    public List<DamageModel> GetDamages()
-        //    {
-        //        using (var client = new HttpClient(handler))
-        //        {
-        //            client.BaseAddress = new Uri(ServerUrl);
-        //            client.DefaultRequestHeaders.Clear();
-        //            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //            try
-        //            {
-        //                var response = client.GetAsync("api/Damages").Result;
-
-        //                if (response.IsSuccessStatusCode)
-        //                {
-        //                    var damagesList = response.Content.ReadAsAsync<IEnumerable<DamageModel>>().Result;
-        //                    return damagesList.ToList();
-        //                }
-
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                new MessageDialog(ex.Message).ShowAsync();
-        //            }
-        //            return null;
-        //        }
-
-        //    }
+        //}
     }
 }

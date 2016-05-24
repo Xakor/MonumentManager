@@ -53,12 +53,12 @@
                 <!-- DAMAGES -->
                 <Grid>
                     <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Damages" Margin="0,20,0,3" />
-                    <GridView ItemsSource="{Binding SculptureCatalogSingleton.Sculptures}" Margin="0,50,0,0">
+                    <GridView ItemsSource="{Binding SculptureCatalogSingleton.Damages}" Margin="0,50,0,0">
                         <GridView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical" Background="Lavender" Height="100" Width="100">
-                                    <Rectangle Width="96" Height="72"  Fill="White" VerticalAlignment="Top" Margin="0,2" />
-                                    <TextBlock Text="Damage" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="{Binding CareFrequency}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridView.ItemTemplate>
@@ -67,6 +67,17 @@
 
                 <!-- INSPECTIONS -->
                 <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Inspections" Margin="0,20,0,3" />
+                <GridView ItemsSource="{Binding SculptureCatalogSingleton.Inspections}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Background="Lavender" Height="100" Width="100">
+                                <TextBlock Text="{Binding NoteTitle}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                                <TextBlock Text="{Binding NoteContent}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+                
             </StackPanel>
         </ScrollViewer>
     </Grid>
