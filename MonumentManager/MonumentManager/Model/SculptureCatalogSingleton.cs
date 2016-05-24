@@ -22,7 +22,7 @@ namespace MonumentManager.Model
         //Actual  Collections
         public ObservableCollection<SculptureModel> Sculptures { get; set; }
         public ObservableCollection<InspectionModel> Inspections { get; set; }
-        // public ObservableCollection<DamageModel> Damages { get; set; }
+        public ObservableCollection<DamageModel> Damages { get; set; }
 
         private SculptureCatalogSingleton()
         {
@@ -31,7 +31,7 @@ namespace MonumentManager.Model
             Sculptures = new ObservableCollection<SculptureModel>(new PersistencyFacade().GetSculptures());
            
             Inspections = new ObservableCollection<InspectionModel>(new PersistencyFacade().GetInspections());
-           // Damages = new ObservableCollection<DamageModel>(new PersistencyFacade().GetDamages());
+            Damages = new ObservableCollection<DamageModel>(new PersistencyFacade().GetDamages());
 
             //This is to get data from the database
 

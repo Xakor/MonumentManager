@@ -16,7 +16,7 @@ namespace MonumentManager.Model
         [JsonProperty(PropertyName = "Damage_Name")]
         public string Name { get; set; }
         [JsonProperty(PropertyName = "CareRecommendation")]
-        public int careRecommendation { get; set; }
+        public string careRecommendation { get; set; }
         [JsonProperty(PropertyName = "CareFrequency")]
         public int careFrequency { get; set; }
         [JsonProperty(PropertyName = "Sculpture_Id")]
