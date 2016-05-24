@@ -9,9 +9,9 @@
     mc:Ignorable="d">
     <Page.Resources>
         <MenuFlyout x:Key="DeclarativeAttachedFlyout2">
-            <MenuFlyoutItem Text="Sort by: ID Number" />
-            <MenuFlyoutItem Text="Sort by: Name" />
-            <MenuFlyoutItem Text="Sort by: Address" />
+            <MenuFlyoutItem Name ="SortIdButton" Text="Sort by: ID Number" Tag="id" Click="SortIdButton_Click" />
+            <MenuFlyoutItem Name="SortNameButton" Text="Sort by: Name" Tag="name" Click="SortNameButton_Click"/>
+            <MenuFlyoutItem Name="SortAddressButton" Text="Sort by: Address" Tag="address" Click="SortAddressButton_Click" />
         </MenuFlyout>
     </Page.Resources>
     <Page.BottomAppBar>

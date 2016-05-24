@@ -29,6 +29,7 @@ namespace MonumentManager.Model
             
             //This is to get data from the database
             Sculptures = new ObservableCollection<SculptureModel>(new PersistencyFacade().GetSculptures());
+            //new PersistencyFacade().GetSculptures();
            // Inspections = new ObservableCollection<InspectionModel>(new PersistencyFacade().GetInspections());
            // Damages = new ObservableCollection<DamageModel>(new PersistencyFacade().GetDamages());
 
@@ -37,10 +38,10 @@ namespace MonumentManager.Model
         }
 
         //Add to SculptureCatalog Method
-        public void Add(int sculptureId, string sculptureName, string sculptureAddress,string sculpturePlacement, string sculpturePicture, int sculptureInsFreq, bool sculptureDNI, string sculptureMaterial, string sculptureType)
-        {
-            Sculptures.Add(new SculptureModel( sculptureId,sculptureName,sculptureAddress, sculpturePlacement, sculpturePicture, sculptureInsFreq, sculptureDNI, sculptureMaterial, sculptureType));
-        }
+        //public void Add(int sculptureId, string sculptureName, string sculptureAddress,string sculpturePlacement, string sculpturePicture, int sculptureInsFreq, bool sculptureDNI, string sculptureMaterial, string sculptureType)
+        //{
+        //    Sculptures.Add(new SculptureModel( sculptureId,sculptureName,sculptureAddress, sculpturePlacement, sculpturePicture, sculptureInsFreq, sculptureDNI, sculptureMaterial, sculptureType));
+        //}
 
         //public void Add2(int id, DateTime date, int sculptureID, string noteTitle, string noteContent )
         //{

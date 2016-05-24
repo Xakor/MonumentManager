@@ -22,7 +22,7 @@ namespace MonumentManager.ViewModel
             get { return _newSculpture; }
             set { _newSculpture = value; OnPropertyChanged(); }
         }
-        //Constructor - you need to instanciate the various properties here
+        //Constructor -  need to instanciate the various properties here
         public MainPageViewModel()
         {
             SculptureCatalogSingleton = SculptureCatalogSingleton.Instance;
@@ -45,6 +45,7 @@ namespace MonumentManager.ViewModel
 
         //View Model Code
         public SculptureCatalogSingleton SculptureCatalogSingleton { get; set; }
+        
         
         //Delete & Add commands 
         public ICommand AddSculptureCommand { get; set; }

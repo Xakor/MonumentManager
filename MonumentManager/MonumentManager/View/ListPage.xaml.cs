@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MonumentManager.Handler;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,6 +36,29 @@ namespace MonumentManager.View
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof (GridPage));
+        }
+
+
+
+        private void SortIdButton_Click(object sender, RoutedEventArgs e)
+        {
+            var tag = SortIdButton.Tag.ToString();
+            //SculptureHandler.SortCollection(tag);
+            //TmpListView.UpdateLayout();
+        }
+
+        private void SortAddressButton_Click(object sender, RoutedEventArgs e)
+        {
+            var tag = SortAddressButton.Tag.ToString();
+            //SculptureHandler.SortCollection(tag);
+
+
+        }
+
+        private void SortNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            var tag = SortNameButton.Tag.ToString();
+           // SculptureHandler.SortCollection(tag);
         }
     }
 }

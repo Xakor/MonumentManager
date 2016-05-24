@@ -35,6 +35,7 @@ namespace MonumentManager.Persistency
                 try
                 {
                     var response = client.GetAsync("api/Sculptures").Result;
+                    //var response = await client.GetAsync("api/Sculptures");
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -51,6 +52,43 @@ namespace MonumentManager.Persistency
             }
 
         }
+
+        //public List<SculptureModel> GetSculptures()
+        //{
+        //    using (var client = new HttpClient(handler))
+        //    {
+        //        client.BaseAddress = new Uri(ServerUrl);
+        //        client.DefaultRequestHeaders.Clear();
+        //        List<SculptureModel> sculptures = new List<SculptureModel>();
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //        try
+        //        {
+        //            var response = client.GetAsync("api/Sculptures").Result;
+        //            //var response = await client.GetAsync("api/Sculptures");
+
+
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //               var sculptureList = response.Content.ReadAsAsync<IEnumerable<SculptureModel>>().Result;
+        //                //return sculptureList.ToList();
+        //                foreach (var sculpture in sculptureList)
+        //                {
+        //                    sculptures.Add(sculpture);
+        //                }
+        //                return sculptures;
+        //            }
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            new MessageDialog(ex.Message).ShowAsync();
+        //        }
+        //        return null;
+        //    }
+
+        //}
+
+
 
         public void SaveSculpture(SculptureModel sculpture)
         {
@@ -74,7 +112,7 @@ namespace MonumentManager.Persistency
             }
         }
 
-        public void DeleteSculpture(SculptureModel selectedSculpture) //here we are passing on the selected sculpture to the method
+        public async void DeleteSculpture(SculptureModel selectedSculpture) //here we are passing on the selected sculpture to the method
         {
 
 
@@ -96,7 +134,7 @@ namespace MonumentManager.Persistency
                     else
                     {
                         string deleteUrl = "api/Sculptures/" + selectedSculpture.Id;
-                        var response = client.DeleteAsync(deleteUrl);
+                        var response = await client.DeleteAsync(deleteUrl);
                     }
 
 
