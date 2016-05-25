@@ -144,11 +144,23 @@
     <None Include="MonumentManager_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Graphic\BigSpread_2480x1200.png" />
+    <Content Include="Assets\Graphic\BigSpread_1240x600.png" />
+    <Content Include="Assets\Graphic\BigSpread_Half.scale-200.png" />
+    <Content Include="Assets\Graphic\MonumentManagerIcon.png" />
+    <Content Include="Assets\Graphic\MonumentManagerIcon_200.png" />
+    <Content Include="Assets\Graphic\MonumentManagerIcon_284.scale-400.png" />
+    <Content Include="Assets\Graphic\MonumentManagerIcon_310.png" />
+    <Content Include="Assets\Graphic\MonumentManagerIcon_44.scale-100.png" />
+    <Content Include="Assets\Graphic\MonumentManagerIcon_600.scale-400.png" />
+    <Content Include="Assets\Graphic\MonumentManagerIcon_620.scale-200.png" />
     <Content Include="Assets\Logo\BigLogo.png" />
     <Content Include="Assets\Logo\BigLogo_1240x600.png" />
     <Content Include="Assets\Pictures\Picture1_havfrue.jpg" />
     <Content Include="Assets\Pictures\Picture2_loever.jpg" />
     <Content Include="Assets\Pictures\Picture3_rytter.jpg" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
     <Content Include="Handler\temp.txt" />
     <Content Include="Persistency\temp.txt" />
     <Content Include="Properties\Default.rd.xml" />
@@ -168,7 +180,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Graphic\" />
     <Folder Include="Assets\Icons\" />
   </ItemGroup>
   <ItemGroup>
