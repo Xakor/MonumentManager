@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace MonumentManager.Model
 {
-    class SculptureModel
+    public class SculptureModel
     {
         //Instance Field
         private int _id;
@@ -34,7 +34,18 @@ namespace MonumentManager.Model
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException();
+                }
+                else if (value.Length <= 2)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                _name = value;
+            }
         }
         [JsonProperty(PropertyName = "Sculpture_Address")]
         public string Address
