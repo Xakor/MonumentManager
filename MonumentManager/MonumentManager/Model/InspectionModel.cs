@@ -9,6 +9,11 @@ namespace MonumentManager.Model
 {
     class InspectionModel
     {
+
+        public InspectionModel()
+        {
+
+        }
         //Properties
         [JsonProperty(PropertyName = "Inspection_Id")]
         public int Id { get; set; }
@@ -21,9 +26,12 @@ namespace MonumentManager.Model
         [JsonProperty(PropertyName = "Inspection_NoteContent")]
         public string NoteContent { get; set; }
 
+        public virtual SculptureModel Sculpture { get; set; }
+
         public override string ToString()
         {
             return string.Format("InspectionID{0} InspectionDate{1} SculptureID{2} NoteTitle{3},NoteContent{4}",Id,date,sculptureId,NoteTitle, NoteContent);
         }
+        
     }
 }

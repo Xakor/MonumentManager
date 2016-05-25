@@ -85,6 +85,40 @@ namespace MMwebservice.Controllers
             return CreatedAtRoute("DefaultApi", new { id = inspections.Inspection_Id }, inspections);
         }
 
+
+        //post an inspection to sculpture
+        [Route("api/Inspections/AddInspectionToSculpture")]
+        [HttpPost]
+        [ResponseType(typeof(Inspections))]
+        public IHttpActionResult AddInspectionToSculpture(Inspections inspection)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+           // db.Entry(inspection.Sculptures).State = EntityState.Unchanged;
+            db.Inspections.Add(inspection);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (InspectionsExists(inspection.Inspection_Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = inspection.Inspection_Id }, inspection);
+        }
+
+
         // DELETE: api/Inspections/5
         [ResponseType(typeof(Inspections))]
         public IHttpActionResult DeleteInspections(int id)

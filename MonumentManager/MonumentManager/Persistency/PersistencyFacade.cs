@@ -169,6 +169,57 @@ namespace MonumentManager.Persistency
         //        }
         //    }
 
+
+        //public void AddInspectiontoSculpture(int Sculpture_Id, int Inspection_Id)
+        //{
+        //    using (var client = new HttpClient(handler))
+        //    {
+        //        client.BaseAddress = new Uri(ServerUrl);
+        //        client.DefaultRequestHeaders.Clear();
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //        try
+        //        {
+        //            //Using a Http Post Request
+        //            var updateResponse =
+        //               client.PostAsync("api/Hotels/AddInspectiontoSculpture/" + Sculpture_Id + "/" + Inspection_Id, null).Result;
+        //            var result = updateResponse.StatusCode;
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            new MessageDialog(ex.Message).ShowAsync();
+        //        }
+        //    }
+        //}
+
+        public void AddInspection(InspectionModel ins)
+        {
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    ins.date = DateTime.Now;
+                    string newInspectionjson = JsonConvert.SerializeObject(ins);
+                    //Create the content we will send in the Http post request 
+                    var content = new StringContent(newInspectionjson, Encoding.UTF8, "application/json");
+                    var response = client.PostAsync("api/Inspections/AddInspectionToSculpture", content).Result;
+                   // var response = await client.PostAsync("api/Inspections/AddInspectionToSculpture", content);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        //Success , Now we can get the hotel by a Http post
+                        new MessageDialog("Inspection created").ShowAsync();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    new MessageDialog(ex.Message).ShowAsync();
+                }
+            }
+        }
+
         public List<InspectionModel> GetInspections()
         {
             using (var client = new HttpClient(handler))
@@ -223,31 +274,6 @@ namespace MonumentManager.Persistency
 
         }
 
-        //public List<DamageModel> GetDamages()
-        //{
-        //    using (var client = new HttpClient(handler))
-        //    {
-        //        client.BaseAddress = new Uri(ServerUrl);
-        //        client.DefaultRequestHeaders.Clear();
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        try
-        //        {
-        //            var response = client.GetAsync("api/Damages").Result;
-
-        //            if (response.IsSuccessStatusCode)
-        //            {
-        //                var damagesList = response.Content.ReadAsAsync<IEnumerable<DamageModel>>().Result.ToList();
-        //                return damagesList;
-        //            }
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            new MessageDialog(ex.Message).ShowAsync();
-        //        }
-        //        return null;
-        //    }
-
-        //}
+      
     }
 }

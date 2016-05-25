@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using MonumentManager.Model;
 using MonumentManager.Persistency;
@@ -24,7 +25,7 @@ namespace MonumentManager.Handler
             MainPageViewModel = SculptureViewModel;
         }
 
-        //this is a method for refreshing the list -to be used after add/delete/update
+        //this is a method for refreshing the list -to be used after add/delete
         public void UpdateSculptureCollection()
         {
             var sculptures = new PersistencyFacade().GetSculptures();
@@ -38,19 +39,6 @@ namespace MonumentManager.Handler
 
         }
 
-
-
-        //public void UpdateInspectionCollection()
-        //{
-        //    var inspections = new PersistencyFacade().GetInspections();
-
-        //    MainPageViewModel.SculptureCatalogSingleton.Inspections.Clear();
-        //    foreach (var inspection in inspections)
-        //    {
-        //        MainPageViewModel.SculptureCatalogSingleton.Inspections.Add(inspection);
-        //    }
-
-        //}
 
         public void AddSculpture()
         {
@@ -84,7 +72,7 @@ namespace MonumentManager.Handler
         {
 
             //new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture);
-            
+
             new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture);
             //refresh collection
             
@@ -125,21 +113,41 @@ namespace MonumentManager.Handler
                  }
              }
         }//end FetchInspections
+
+
+         public void AddInspection()
+         {
+             //int Sculpture_Id = MainPageViewModel.SelectedSculpture.Id;
+             //int Inspection_Id = MainPageViewModel.NewInspection.Id;
+             ////DateTime Date = MainPageViewModel.NewInspection.date;
+             //string NoteTitle = MainPageViewModel.NewInspection.NoteTitle;
+             //string NoteContent = MainPageViewModel.NewInspection.NoteContent;
+             
+             InspectionModel ins = new InspectionModel();
+
+             ins.Sculpture = MainPageViewModel.SelectedSculpture;
+             ins.sculptureId = MainPageViewModel.SelectedSculpture.Id;
+             ins.Id =MainPageViewModel.NewInspection.Id;
+             ins.NoteTitle = MainPageViewModel.NewInspection.NoteTitle;
+             ins.NoteContent =MainPageViewModel.NewInspection.NoteContent;
+
+            new PersistencyFacade().AddInspection(ins);
+
+            var inspections = new PersistencyFacade().GetInspections();
+
+            MainPageViewModel.SculptureCatalogSingleton.Inspections.Clear();
+            foreach (var inspection in inspections)
+            {
+                MainPageViewModel.SculptureCatalogSingleton.Inspections.Add(inspection);
+            }
+
+
+           FetchInspections();
+         }
     }//end Class
 }//End Namespace
 
-        //better way to do it below
-
-        //public async Task DelSculpture()
-        //{
-
-        //    await Task.Run(() => new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture));
-        //    //refresh collection
-        //    UpdateSculptureCollection();
-
-        //    // MainPageViewModel.SculptureCatalogSingleton.Sculptures.RemoveAt(MainPageViewModel.SelectedSculpture.Id);
-
-        //}
+       
 
         //public static void SortCollection(string criteria)
         //{

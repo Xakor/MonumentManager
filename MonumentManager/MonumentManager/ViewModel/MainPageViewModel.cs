@@ -31,6 +31,7 @@ namespace MonumentManager.ViewModel
             DamageQueryCollection = new ObservableCollection<DamageModel>();
             InspectionQueryCollection = new ObservableCollection<InspectionModel>();
             NewSculpture = new SculptureModel();
+            NewInspection= new InspectionModel();
             //instance of the handler
             SculptureHandler = new Handler.SculptureHandler(this);
             SearchHandler = new Handler.SearchHandler(this);
@@ -42,7 +43,8 @@ namespace MonumentManager.ViewModel
             //SortListNumericallyCommand = new RelayCommand(SculptureHandler.SortListNumerically);
             //SortListByAddressCommand = new RelayCommand(SculptureHandler.SortListByAddress);
             //AddDamageCommand = new RelayCommand(SculptureHandler.AddDamage);
-            //AddInspectionCommand = new RelayCommand(SculptureHandler.AddInspection);
+            AddInspectionCommand = new RelayCommand(SculptureHandler.AddInspection);
+            //search command
             RunSearchCommand = new RelayCommand(SearchHandler.RunSearch);
 
         }
@@ -65,7 +67,7 @@ namespace MonumentManager.ViewModel
 
         // Inspection & Damage commands
 
-        //public ICommand AddInspectionCommand { get; set; }
+        public ICommand AddInspectionCommand { get; set; }
         //public ICommand AddDamageCommand { get; set; }
 
         // this is a new instance of the sculptureModel class 
@@ -78,6 +80,13 @@ namespace MonumentManager.ViewModel
             set { _selectedSculpture = value; DamageQueryCollection.Clear(); InspectionQueryCollection.Clear(); SculptureHandler.FetchDamages(); SculptureHandler.FetchInspections(); OnPropertyChanged(); }
         }
 
+        private InspectionModel _newInspection;
+
+        public InspectionModel NewInspection
+        {
+            get { return _newInspection; }
+            set { _newInspection = value; OnPropertyChanged(); }
+        }
         //The following properties are all related to the Search functionality
         public ObservableCollection<SculptureModel> SearchResults { get; set; } //List of Search Results
         public ICommand RunSearchCommand { get; set; } //The Search Button
