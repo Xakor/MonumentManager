@@ -28,11 +28,13 @@ namespace MonumentManager.ViewModel
         {
             SculptureCatalogSingleton = SculptureCatalogSingleton.Instance;
             SearchResults = new ObservableCollection<SculptureModel>();
+            DamageQueryCollection = new ObservableCollection<DamageModel>();
+            InspectionQueryCollection = new ObservableCollection<InspectionModel>();
             NewSculpture = new SculptureModel();
             //instance of the handler
             SculptureHandler = new Handler.SculptureHandler(this);
             SearchHandler = new Handler.SearchHandler(this);
-
+            
             //commands 
             AddSculptureCommand = new RelayCommand(SculptureHandler.AddSculpture);
             DelSculptureCommand = new RelayCommand(SculptureHandler.DelSculpture);
@@ -73,13 +75,17 @@ namespace MonumentManager.ViewModel
         public SculptureModel SelectedSculpture
         {
             get { return _selectedSculpture; }
-            set { _selectedSculpture = value; OnPropertyChanged(); }
+            set { _selectedSculpture = value; DamageQueryCollection.Clear(); InspectionQueryCollection.Clear(); SculptureHandler.FetchDamages(); SculptureHandler.FetchInspections(); OnPropertyChanged(); }
         }
 
         //The following properties are all related to the Search functionality
         public ObservableCollection<SculptureModel> SearchResults { get; set; } //List of Search Results
         public ICommand RunSearchCommand { get; set; } //The Search Button
         public string SearchTerm { get; set; } //The text in the textbox
+
+        //This is all related to the Damages & Inspections on the detail Page
+        public ObservableCollection<DamageModel> DamageQueryCollection { get; set; }
+        public ObservableCollection<InspectionModel> InspectionQueryCollection { get; set; }  
 
 
         // this is a new instance of the inspectionmodel class 

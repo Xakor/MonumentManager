@@ -80,8 +80,6 @@ namespace MonumentManager.Handler
 
 
         }
-
-
         public void DelSculpture()
         {
 
@@ -94,6 +92,41 @@ namespace MonumentManager.Handler
 
             // MainPageViewModel.SculptureCatalogSingleton.Sculptures.RemoveAt(MainPageViewModel.SelectedSculpture.Id);
         }
+
+         public void FetchDamages()
+         {
+            
+            if (MainPageViewModel.SelectedSculpture != null)
+             {
+                IEnumerable<DamageModel> damageQuery =
+                     from damage in SculptureCatalogSingleton.Instance.Damages
+                     where damage.SculptureId == MainPageViewModel.SelectedSculpture.Id
+                     select damage;
+
+                 foreach (var damage in damageQuery)
+                 {
+                     MainPageViewModel.DamageQueryCollection.Add(damage);
+                 }
+             }
+         }
+
+         public void FetchInspections()
+         {
+             if (MainPageViewModel.SelectedSculpture != null)
+             {
+                IEnumerable<InspectionModel> inspectionQuery =
+                     from ins in SculptureCatalogSingleton.Instance.Inspections
+                     where ins.sculptureId == MainPageViewModel.SelectedSculpture.Id
+                     select ins;
+
+                 foreach (var inspection in inspectionQuery)
+                 {
+                     MainPageViewModel.InspectionQueryCollection.Add(inspection);
+                 }
+             }
+        }//end FetchInspections
+    }//end Class
+}//End Namespace
 
         //better way to do it below
 
@@ -133,12 +166,6 @@ namespace MonumentManager.Handler
         //    {
         //        CatalogSingleton.Sculptures.Add(sculpture);
         //    }
-
-
-        //}
-
-    }
-    }
 
 //    public void AddInspection()
     //    {

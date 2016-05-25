@@ -7,11 +7,10 @@
     xmlns:ViewModel="using:MonumentManager.ViewModel"
     x:Class="MonumentManager.View.DetailsPage"
     mc:Ignorable="d">
-    <!-- Ayy LMAO -->
     <Page.Resources>
         <MenuFlyout x:Key="AddButtonMenuFlyout">
-            <MenuFlyoutItem Text="Report a Damage" />
-            <MenuFlyoutItem Text="Add an Inspection" />
+            <MenuFlyoutItem Text="Report a Damage" Click="MenuFlyoutItem_Click" />
+            <MenuFlyoutItem Text="Add an Inspection" Click="MenuFlyoutItem_Click_1" />
         </MenuFlyout>
     </Page.Resources>
     <Page.BottomAppBar>
@@ -37,7 +36,7 @@
                 <!-- BASIC DATA -->
                 <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Basic Data" Margin="0,10,0,3"></TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <Ellipse MinHeight="100" MinWidth="100"  Stroke="Lavender" StrokeThickness="3">
+                    <Ellipse MinHeight="100" MinWidth="100" Stroke="Lavender" StrokeThickness="3">
                         <Ellipse.Fill>
                             <ImageBrush Stretch="UniformToFill" ImageSource="{Binding SelectedSculpture.Picture}"></ImageBrush>
                         </Ellipse.Fill>
@@ -54,12 +53,12 @@
                 <!-- DAMAGES -->
                 <Grid>
                     <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Damages" Margin="0,20,0,3" />
-                    <GridView ItemsSource="{Binding SculptureCatalogSingleton.Damages}" Margin="0,50,0,0">
+                    <GridView ItemsSource="{Binding DamageQueryCollection}" Margin="0,50,0,0">
                         <GridView.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Vertical" Background="Lavender" Height="100" Width="100">
-                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                                    <TextBlock Text="{Binding CareFrequency}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                                <StackPanel Orientation="Vertical" Background="Lavender" Height="100" Width="400" Padding="5">
+                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="{Binding careRecommendation}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridView.ItemTemplate>
@@ -68,12 +67,12 @@
 
                 <!-- INSPECTIONS -->
                 <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Inspections" Margin="0,20,0,3" />
-                <GridView ItemsSource="{Binding SculptureCatalogSingleton.Inspections}">
+                <GridView ItemsSource="{Binding InspectionQueryCollection}">
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Background="Lavender" Height="100" Width="100">
-                                <TextBlock Text="{Binding NoteTitle}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                                <TextBlock Text="{Binding NoteContent}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <StackPanel Orientation="Vertical" Background="Lavender" Height="100" Width="400" Padding="5">
+                                <TextBlock Text="{Binding NoteTitle}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                                <TextBlock Text="{Binding NoteContent}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
                             </StackPanel>
                         </DataTemplate>
                     </GridView.ItemTemplate>
