@@ -60,5 +60,10 @@ namespace MonumentManager.View
             var tag = SortNameButton.Tag.ToString();
            // SculptureHandler.SortCollection(tag);
         }
+
+        private void TmpListView_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(DetailsPage));
+        }
     }
 }

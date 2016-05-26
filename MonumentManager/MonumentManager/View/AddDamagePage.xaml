@@ -5,7 +5,12 @@
     xmlns:local="using:MonumentManager.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:MonumentManager.ViewModel"
     mc:Ignorable="d">
+
+    <!--<Page.DataContext>
+        <viewModel:MainPageViewModel/>
+    </Page.DataContext>-->
 
     <Grid Background="LightGray">
         <Rectangle Height="48" Fill="Lavender" VerticalAlignment="Top" />
@@ -13,9 +18,9 @@
 
         <ScrollViewer Margin="0,48,0,0">
             <StackPanel Margin="0" Orientation="Vertical" Padding="10,0" MinWidth="400" HorizontalAlignment="Left" >
-                <TextBox x:Name="DamageNameBox" PlaceholderText="Damage Name" Header="Name:" Width="300" HorizontalAlignment="Left" Margin="0,10,0,0" />
-                <TextBox x:Name="CareRecomBox" PlaceholderText="Care Recommendation..." Header="Recommended Treatment:" Width="300" Height="100" HorizontalAlignment="Left" Margin="0,10,0,0" AcceptsReturn="True" FontSize="15" InputScope="Default" />
-                <ComboBox x:Name="CareFreqBox" MinWidth="300" Header="Treatment frequency (in Years)" Margin="0,10,0,0" SelectedIndex="4">
+                <TextBox x:Name="DamageNameBox" PlaceholderText="Name of the damage" Header="Name:" Width="300" HorizontalAlignment="Left" Margin="0,10,0,0" Text="{Binding NewDamage.Name, Mode=TwoWay}"/>
+                <TextBox x:Name="CareRecomBox" PlaceholderText="Care Recommendation..." Header="Recommended Treatment:" Width="300" Height="100" HorizontalAlignment="Left" Margin="0,10,0,0" AcceptsReturn="True" FontSize="15" InputScope="Default" Text="{Binding NewDamage.careRecommendation, Mode=TwoWay}"/>
+                <ComboBox x:Name="CareFreqBox" MinWidth="300" Header="Treatment frequency (in Years)" Margin="0,10,0,0" SelectedIndex="4" SelectedItem="{Binding NewDamage.careFrequency, Mode=TwoWay}" >
                     <ComboBoxItem Content="1" />
                     <ComboBoxItem Content="2" />
                     <ComboBoxItem Content="3" />
@@ -27,7 +32,7 @@
                     <ComboBoxItem Content="9" />
                     <ComboBoxItem Content="10" />
                 </ComboBox>
-                <Button Content="Report Damage" Margin="0,20" />
+                <Button Content="Report Damage" Margin="0,20" Name="Button" Click="Button_Click" Command="{Binding AddDamageCommand}"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

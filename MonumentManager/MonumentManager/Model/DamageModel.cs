@@ -9,7 +9,13 @@ namespace MonumentManager.Model
 {
     class DamageModel
     {
-        
+        //empty contructor
+
+        public DamageModel()
+        {
+            
+        }
+
         //Properties
         [JsonProperty(PropertyName = "Damage_Id")]
         public int Id { get; set; }
@@ -22,7 +28,8 @@ namespace MonumentManager.Model
         [JsonProperty(PropertyName = "Sculpture_Id")]
         public int SculptureId { get; set; }
 
-        
+        public virtual SculptureModel Sculpture { get; set; }
+
         public override string ToString()
         {
             return string.Format( "DamageId {0} DamageName {1} CareRecommendation{2} CareFrequency {3} SculptureId {4} ",

@@ -32,17 +32,16 @@ namespace MonumentManager.ViewModel
             InspectionQueryCollection = new ObservableCollection<InspectionModel>();
             NewSculpture = new SculptureModel();
             NewInspection= new InspectionModel();
+            NewDamage= new DamageModel();
             //instance of the handler
             SculptureHandler = new Handler.SculptureHandler(this);
             SearchHandler = new Handler.SearchHandler(this);
             
-            //commands 
+            //sculpture commands 
             AddSculptureCommand = new RelayCommand(SculptureHandler.AddSculpture);
             DelSculptureCommand = new RelayCommand(SculptureHandler.DelSculpture);
-            //SortListAlphabeticallyCommand = new RelayCommand(SculptureHandler.SortListAlphabetically);
-            //SortListNumericallyCommand = new RelayCommand(SculptureHandler.SortListNumerically);
-            //SortListByAddressCommand = new RelayCommand(SculptureHandler.SortListByAddress);
-            //AddDamageCommand = new RelayCommand(SculptureHandler.AddDamage);
+            //damage/inspection commands
+            AddDamageCommand = new RelayCommand(SculptureHandler.AddDamage);
             AddInspectionCommand = new RelayCommand(SculptureHandler.AddInspection);
             //search command
             RunSearchCommand = new RelayCommand(SearchHandler.RunSearch);
@@ -60,15 +59,11 @@ namespace MonumentManager.ViewModel
         public ICommand AddSculptureCommand { get; set; }
         public ICommand DelSculptureCommand { get; set; }
 
-        // Sort commands
-        //public ICommand SortListAlphabeticallyCommand { get; set; }
-        //public ICommand SortListNumericallyCommand { get; set; }
-        //public ICommand SortListByAddressCommand { get; set; }
 
         // Inspection & Damage commands
 
         public ICommand AddInspectionCommand { get; set; }
-        //public ICommand AddDamageCommand { get; set; }
+        public ICommand AddDamageCommand { get; set; }
 
         // this is a new instance of the sculptureModel class 
         // now we can acces its properties through the AddSculpture method in the handler
@@ -86,7 +81,19 @@ namespace MonumentManager.ViewModel
         {
             get { return _newInspection; }
             set { _newInspection = value; OnPropertyChanged(); }
+
         }
+
+
+        private DamageModel _newDamage;
+
+        public DamageModel NewDamage
+        {
+            get { return _newDamage; }
+            set { _newDamage = value; OnPropertyChanged(); }
+        }
+
+
         //The following properties are all related to the Search functionality
         public ObservableCollection<SculptureModel> SearchResults { get; set; } //List of Search Results
         public ICommand RunSearchCommand { get; set; } //The Search Button
@@ -96,17 +103,6 @@ namespace MonumentManager.ViewModel
         public ObservableCollection<DamageModel> DamageQueryCollection { get; set; }
         public ObservableCollection<InspectionModel> InspectionQueryCollection { get; set; }  
 
-
-        // this is a new instance of the inspectionmodel class 
-        // now we can acces its properties through the AddInscpections method in the handler
-
-        //private InspectionModel _selectedInspection;
-
-        //public InspectionModel SelectedInspection
-        //{
-        //    get { return _selectedInspection; }
-        //    set { _selectedInspection = value; OnPropertyChanged(); }
-        //}
         
         //Implement INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

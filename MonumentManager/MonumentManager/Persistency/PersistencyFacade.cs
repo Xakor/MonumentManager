@@ -52,43 +52,6 @@ namespace MonumentManager.Persistency
 
         }
 
-        //public List<SculptureModel> GetSculptures()
-        //{
-        //    using (var client = new HttpClient(handler))
-        //    {
-        //        client.BaseAddress = new Uri(ServerUrl);
-        //        client.DefaultRequestHeaders.Clear();
-        //        List<SculptureModel> sculptures = new List<SculptureModel>();
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        try
-        //        {
-        //            var response = client.GetAsync("api/Sculptures").Result;
-        //            //var response = await client.GetAsync("api/Sculptures");
-
-
-        //            if (response.IsSuccessStatusCode)
-        //            {
-        //               var sculptureList = response.Content.ReadAsAsync<IEnumerable<SculptureModel>>().Result;
-        //                //return sculptureList.ToList();
-        //                foreach (var sculpture in sculptureList)
-        //                {
-        //                    sculptures.Add(sculpture);
-        //                }
-        //                return sculptures;
-        //            }
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            new MessageDialog(ex.Message).ShowAsync();
-        //        }
-        //        return null;
-        //    }
-
-        //}
-
-
-
         public void SaveSculpture(SculptureModel sculpture)
         {
             using (var client = new HttpClient(handler))
@@ -111,7 +74,7 @@ namespace MonumentManager.Persistency
             }
         }
 
-        public async void DeleteSculpture(SculptureModel selectedSculpture) //here we are passing on the selected sculpture to the method
+        public async Task DeleteSculpture(SculptureModel selectedSculpture) //here we are passing on the selected sculpture to the method
         {
 
 
@@ -121,8 +84,6 @@ namespace MonumentManager.Persistency
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                //this is to delete by sculpture id
-                //var selsculpt = selectedSculpture.Id; 
 
                 try
                 {
@@ -146,52 +107,6 @@ namespace MonumentManager.Persistency
 
         }
 
-
-        //    public void SaveInspection(InspectionModel inspection)
-        //    {
-        //        using (var client = new HttpClient(handler))
-        //        {
-        //            client.BaseAddress = new Uri(ServerUrl);
-        //            client.DefaultRequestHeaders.Clear();
-        //            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //            try
-        //            {
-        //                string postBody = JsonConvert.SerializeObject(inspection);
-        //                var response =
-        //                    client.PostAsync("api/Inspections",
-        //                        new StringContent(postBody, Encoding.UTF8, "application/json")).Result;
-
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                new MessageDialog(ex.Message).ShowAsync();
-        //            }
-        //        }
-        //    }
-
-
-        //public void AddInspectiontoSculpture(int Sculpture_Id, int Inspection_Id)
-        //{
-        //    using (var client = new HttpClient(handler))
-        //    {
-        //        client.BaseAddress = new Uri(ServerUrl);
-        //        client.DefaultRequestHeaders.Clear();
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        try
-        //        {
-        //            //Using a Http Post Request
-        //            var updateResponse =
-        //               client.PostAsync("api/Hotels/AddInspectiontoSculpture/" + Sculpture_Id + "/" + Inspection_Id, null).Result;
-        //            var result = updateResponse.StatusCode;
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            new MessageDialog(ex.Message).ShowAsync();
-        //        }
-        //    }
-        //}
-
         public void AddInspection(InspectionModel ins)
         {
             using (var client = new HttpClient(handler))
@@ -209,7 +124,7 @@ namespace MonumentManager.Persistency
                    // var response = await client.PostAsync("api/Inspections/AddInspectionToSculpture", content);
                     if (response.IsSuccessStatusCode)
                     {
-                        //Success , Now we can get the hotel by a Http post
+                        //Success , Now we can get the inspection by a Http post
                         new MessageDialog("Inspection created").ShowAsync();
                     }
                 }
@@ -274,6 +189,34 @@ namespace MonumentManager.Persistency
 
         }
 
-      
+        public void AddDamage(DamageModel dmg)
+        {
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    
+                    string newDamagejson = JsonConvert.SerializeObject(dmg);
+                    //Create the content we will send in the Http post request 
+                    var content = new StringContent(newDamagejson, Encoding.UTF8, "application/json");
+                    var response = client.PostAsync("api/Damages/AddDamageToSculpture", content).Result;
+                    
+                    if (response.IsSuccessStatusCode)
+                    {
+                        //Success , Now we can get the damage by a Http post
+                        new MessageDialog("Damage created").ShowAsync();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    new MessageDialog(ex.Message).ShowAsync();
+                }
+            }
+        }
+
+
     }
 }

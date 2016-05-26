@@ -36,6 +36,16 @@ namespace MonumentManager.View
             Frame.Navigate(typeof (ListPage));
         }
 
+        private void StackPanel_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(DetailsPage));
+        }
+
+        private void AppBarButtonAddSculpture_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddSculpturePage));
+        }
+
         //public void GridView_ItemClick(object sender, ItemClickEventArgs e)
         //{
         //    MainPage.

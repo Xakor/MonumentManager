@@ -85,6 +85,39 @@ namespace MMwebservice.Controllers
             return CreatedAtRoute("DefaultApi", new { id = damages.Damage_Id }, damages);
         }
 
+        //post a damage to sculpture
+        [Route("api/Damages/AddDamageToSculpture")]
+        [HttpPost]
+        [ResponseType(typeof(Damages))]
+        public IHttpActionResult AddDamageToSculpture(Damages damage)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+
+            db.Damages.Add(damage);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (DamagesExists(damage.Damage_Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = damage.Damage_Id }, damage);
+        }
+
+
         // DELETE: api/Damages/5
         [ResponseType(typeof(Damages))]
         public IHttpActionResult DeleteDamages(int id)

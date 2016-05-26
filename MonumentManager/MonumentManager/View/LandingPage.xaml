@@ -10,6 +10,6 @@
     <Grid Background="LightGray">
         <Rectangle Height="48" Fill="Lavender" VerticalAlignment="Top" />
         <TextBlock Text="Home"  FontFamily="Segoe UI" FontSize="20" LineHeight="24" FontWeight="SemiLight" Padding="10, 10, 0, 0"/>
-        <Image Name="mmLogo" Source="ms-appx:///Assets/Logo/BigLogo_1240x600.png" Height="300"></Image>
+        <Image Name="mmLogo" Source="ms-appx:///Assets/Graphic/BigSpread_1240x600.png" Height="600"></Image>
     </Grid>
 </Page>

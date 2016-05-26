@@ -29,7 +29,6 @@ namespace MonumentManager.Handler
         public void UpdateSculptureCollection()
         {
             var sculptures = new PersistencyFacade().GetSculptures();
-            //var sculptures = new ObservableCollection<SculptureModel>(new PersistencyFacade().GetSculptures());
 
             MainPageViewModel.SculptureCatalogSingleton.Sculptures.Clear();
             foreach (var sculpture in sculptures)
@@ -65,20 +64,17 @@ namespace MonumentManager.Handler
                 MainPageViewModel.SculptureCatalogSingleton.Sculptures.Add(sculpt);
             }
 
-
-
         }
-        public void DelSculpture()
+
+        public async void DelSculpture()
         {
 
-            //new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture);
+            await new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture);
 
-            new PersistencyFacade().DeleteSculpture(MainPageViewModel.SelectedSculpture);
             //refresh collection
             
             UpdateSculptureCollection();
 
-            // MainPageViewModel.SculptureCatalogSingleton.Sculptures.RemoveAt(MainPageViewModel.SelectedSculpture.Id);
         }
 
          public void FetchDamages()
@@ -114,14 +110,9 @@ namespace MonumentManager.Handler
              }
         }//end FetchInspections
 
-
+        // add methods 
          public void AddInspection()
          {
-             //int Sculpture_Id = MainPageViewModel.SelectedSculpture.Id;
-             //int Inspection_Id = MainPageViewModel.NewInspection.Id;
-             ////DateTime Date = MainPageViewModel.NewInspection.date;
-             //string NoteTitle = MainPageViewModel.NewInspection.NoteTitle;
-             //string NoteContent = MainPageViewModel.NewInspection.NoteContent;
              
              InspectionModel ins = new InspectionModel();
 
@@ -143,6 +134,31 @@ namespace MonumentManager.Handler
 
 
            FetchInspections();
+         }
+
+         public void AddDamage()
+         {
+             DamageModel dmg =  new DamageModel();
+
+             dmg.Sculpture = MainPageViewModel.SelectedSculpture;
+             dmg.SculptureId = MainPageViewModel.SelectedSculpture.Id;
+             dmg.Id = MainPageViewModel.NewDamage.Id;
+             dmg.Name = MainPageViewModel.NewDamage.Name;
+             dmg.careRecommendation = MainPageViewModel.NewDamage.careRecommendation;
+             dmg.careFrequency = MainPageViewModel.NewDamage.careFrequency;
+
+             new PersistencyFacade().AddDamage(dmg);
+
+             var damages = new PersistencyFacade().GetDamages();
+
+             MainPageViewModel.SculptureCatalogSingleton.Damages.Clear();
+             foreach (var damage in damages)
+             {
+                 MainPageViewModel.SculptureCatalogSingleton.Damages.Add(damage);
+             }
+
+             FetchDamages();
+             
          }
     }//end Class
 }//End Namespace

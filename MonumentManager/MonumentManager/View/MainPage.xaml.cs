@@ -63,13 +63,14 @@ namespace MonumentManager.View
                 ((Frame)ShellSplitView.Content).Navigate(typeof(SearchPage));
         }
 
-        public void OnDetailsButtonChecked(object sender, RoutedEventArgs e)
-        {
-            ShellSplitView.IsPaneOpen = false;
-            if ( ShellSplitView.Content != null)
-                ((Frame) ShellSplitView.Content).Navigate(typeof (DetailsPage));
+        // This is left over from development, when the Details-page was available through the menu!
+        //public void OnDetailsButtonChecked(object sender, RoutedEventArgs e)
+        //{
+        //    ShellSplitView.IsPaneOpen = false;
+        //    if ( ShellSplitView.Content != null)
+        //        ((Frame) ShellSplitView.Content).Navigate(typeof (DetailsPage));
             
-        }
+        //}
         
     }
 }

@@ -37,10 +37,11 @@
                 <RadioButton Tag="&#xE8FD;" Content="List View" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnListButtonChecked" />
 
                 <!-- Temp Grid Button -->
-                <RadioButton Tag="&#xE8A9;" Content="Grid View (temp)" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnGridButtonChecked" />
+                <RadioButton Tag="&#xE8A9;" Content="Grid View" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnGridButtonChecked" />
 
-                <!-- Temp Details Page -->
-                <RadioButton x:Name="DetailsPageRadioButton" Tag="&#xE7C3;" Content="Details (temp)" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnDetailsButtonChecked"/>
+                <!--This is left over from development, when the Details-page was available through the menu-->
+                <!-- Temp Details Page --><!--
+                <RadioButton x:Name="DetailsPageRadioButton" Tag="&#xE7C3;" Content="Details (temp)" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnDetailsButtonChecked"/>-->
 
                 <!-- Search Button -->
                 <RadioButton Tag="&#xE71E;" Content="Search" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnSearchButtonChecked" />
