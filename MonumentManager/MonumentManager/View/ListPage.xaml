@@ -38,7 +38,7 @@
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="Margin" Value="0,10,0,0" />
+                    <Setter Property="Margin" Value="0,5,0,0" />
                     <Setter Property="Padding" Value="3"></Setter>
                 </Style>
             </ListView.ItemContainerStyle>
@@ -46,9 +46,16 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Height="50" Orientation="Horizontal" Background="Lavender" Margin="0,0,0,0">
-                        <TextBlock Text="{Binding Id}" Margin="10,0,0,0" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Name}" Padding="0" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <TextBlock Text="{Binding Address}" Padding="0" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Border HorizontalAlignment="Left" Background="LightGray" Width="40" Height="40" Margin="5,0,0,0">
+                            <TextBlock Text="" Foreground="Gray"  FontFamily="Segoe MDL2 Assets" FontSize="28" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <TextBlock Text="{Binding Id}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="36" Width="80" TextAlignment="Right"/>
+                        <StackPanel Margin="0,4,20,0">
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" Padding="0" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Address}" Padding="0" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
